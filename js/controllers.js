@@ -10,7 +10,7 @@ var machines = [
         views: {
             front: [
                 {name: 'On/Off Switch',
-                description: 'Makes the machine run or stop, but does not cut power to the machine and should never be substituted for unplugging the power when required.'
+                description: 'Makes the machine run or stop, but does not cut power to the machine and should never be substituted for unplugging the power when required.',
                 x: 200, y: 150}  //Temporary
             ],
             rear: [
