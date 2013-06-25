@@ -1,0 +1,269 @@
+/* used for part of jumbotron */
+@font-face {
+    font-family: 'Bebas';
+    src: url('./fonts/Bebas/Bebas.eot');
+    src: url('./fonts/Bebas/Bebas.eot?#iefix') format('embedded-opentype'),
+         url('./fonts/Bebas/Bebas.woff') format('woff'),
+         url('./fonts/Bebas/Bebas.ttf') format('truetype'),
+         url('./fonts/Bebas/Bebas.svg#Bebas') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* Large/Desktop */
+@media (max-width: 979px) {
+.navbar-fixed-top {
+    margin-bottom: 0;
+}
+
+div[ng-view] {
+    padding: 0 !important;
+}
+
+}
+
+/* Medium/Tablet */
+@media (max-width: 767px) {
+.masthead h1 {
+    font-size: 65px !important;
+}
+
+.masthead p {
+    font-size: 24px !important;
+}
+
+#wrap > div[ng-view] {
+    margin-left: -20px;
+    margin-right: -20px;
+}
+
+.container .marketing .row-fluid .machine {
+    margin-bottom: 35px;
+}
+
+.container .marketing .row-fluid:last-of-type .machine:last-of-type {
+    margin-bottom: 0;
+}
+
+}
+
+/* Small/Phone */
+@media (max-width: 480px) {
+.marketing h1 {
+    font-size: 30px !important;
+}
+
+.marketing-byline {
+    font-size: 18px !important;
+}
+
+}
+
+/* Sticky Footer */
+html, body {
+    height: 100%;
+}
+
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -91px;
+}
+
+#wrap:after {
+    content: '';
+    display: block;
+
+    /* must be >= footer */
+    height: 150px;
+}
+
+footer {
+    height: 60px;
+
+    text-align: center;
+    padding: 15px 0;
+    border-top: 1px solid #E5E5E5;
+    background-color: #F5F5F5;
+}
+
+footer p {
+    margin-bottom: 0;
+    color: #777;
+}
+
+/* Main */
+
+#wrap > div[ng-controller='MainCtrl'] {
+    padding-top: 41px;
+}
+
+.navbar .brand {
+    font-weight: bold;
+}
+
+/* Push down to compensate for nav */
+div[ng-view] {
+    padding: 40px 0;
+}
+
+/* jumbotron adapted from Twitter Bootstrap jumbotron */
+.jumbotron {
+    padding: 30px 0 40px;
+    position: relative;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 3px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.075);
+    background: #204EC5; /* Old browsers */
+    background: -webkit-linear-gradient(45deg, #204EC5 0%, #9c9c9c 100%);
+    background:    -moz-linear-gradient(45deg, #204EC5 0%, #9c9c9c 100%);
+    background:      -o-linear-gradient(45deg, #204EC5 0%, #9c9c9c 100%);
+    background:         linear-gradient(45deg, #204EC5 0%, #9c9c9c 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#204EC5', endColorstr='#9c9c9c',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+    -webkit-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.2), inset 0 -3px 7px rgba(0, 0, 0, 0.2);
+       -moz-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.2), inset 0 -3px 7px rgba(0, 0, 0, 0.2);
+            box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.2), inset 0 -3px 7px rgba(0, 0, 0, 0.2);
+}
+
+.jumbotron h1 {
+    font-size: 80px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    line-height: 1;
+    margin-top: 0;
+}
+
+.jumbotron p {
+    text-transform: uppercase;
+    font-size: 36px;
+    font-family: 'Bebas';
+    font-weight: bold;
+    letter-spacing: 2px;
+    line-height: 1.25;
+    margin-bottom: 0;
+}
+
+.jumbotron .container {
+    position: relative;
+    z-index: 2;
+}
+
+.jumbotron:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    /* CSS Blueprint Grid */
+    background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.1) 2px, transparent 2px),
+               -webkit-linear-gradient(90deg, rgba(255, 255, 255, 0.2) 2px, transparent 2px),
+                      -webkit-linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+               -webkit-linear-gradient(90deg, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+
+    background-image:    -moz-linear-gradient(rgba(255, 255, 255, 0.1) 2px, transparent 2px),
+                  -moz-linear-gradient(90deg, rgba(255, 255, 255, 0.2) 2px, transparent 2px),
+                         -moz-linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                  -moz-linear-gradient(90deg, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+
+    background-image:      -o-linear-gradient(rgba(255, 255, 255, 0.1) 2px, transparent 2px),
+                    -o-linear-gradient(90deg, rgba(255, 255, 255, 0.2) 2px, transparent 2px),
+                           -o-linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                    -o-linear-gradient(90deg, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+
+    background-image:         linear-gradient(rgba(255, 255, 255, 0.1) 2px, transparent 2px),
+                       linear-gradient(90deg, rgba(255, 255, 255, 0.2) 2px, transparent 2px),
+                              linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                       linear-gradient(90deg, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+
+    -webkit-background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+       -moz-background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+            background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+    
+    background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+}
+
+.marketing {
+    text-align: center;
+    color: #5A5A5A;
+}
+
+.marketing h1 {
+    margin: 40px 0 10px;
+    font-size: 60px;
+    font-weight: 200;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+.marketing a.machine {
+    color: #545454;
+    position: relative;
+    height: 340px;
+    background-position: center 0;
+
+    -webkit-background-size: 300px;
+       -moz-background-size: 300px;
+            background-size: 300px;
+
+    background-repeat: no-repeat;
+}
+
+.marketing a.machine:hover {
+    text-decoration: none;
+}
+
+.marketing .marketing-byline {
+    margin-bottom: 30px;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.25;
+    color: #999;
+}
+
+.machine {
+    border: 10px solid #FFF;
+
+    -webkit-box-shadow: 0 1px 10px #999;
+       -moz-box-shadow: 0 1px 10px #999;
+            box-shadow: 0 1px 10px #999;
+
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+.machine:hover {
+    -webkit-box-shadow: 0 0 8px #999;
+       -moz-box-shadow: 0 0 8px #999;
+            box-shadow: 0 0 8px #999;
+}
+
+.machine:active {
+    -webkit-box-shadow: 0 0 5px #999;
+       -moz-box-shadow: 0 0 5px #999;
+            box-shadow: 0 0 5px #999;
+}
+
+.machine h2 {
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 0, 0, 0.075);
+
+    -webkit-box-shadow: 0 0 3px #999;
+       -moz-box-shadow: 0 0 3px #999;
+            box-shadow: 0 0 3px #999;
+    background: #ffffff;
+    background: rgba(255, 255, 255, 0.86);
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    margin-bottom: 0;
+}
+
+.container .marketing .row-fluid:first-of-type .machine {
+    margin-bottom: 35px;
+}
