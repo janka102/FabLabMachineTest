@@ -20,7 +20,19 @@ var machines = [
                 {name: 'Hinged Wheel Covers',
                 description: 'Allows wheels and pulleys to be easily accessed for maintenance, blade changes, or adjestmens.',
                 count: 2,
-                x: 190, y: 130}  //Temporary locations
+                x: 190, y: 130},  //Temporary locations
+                {name: 'Blade Guide Assemblies',
+                description: 'Two assemblies, 1 upper and 1 lower, each consisting of 2 roller bearing blade guides for side-to-side support and 1 roller bearing to support the back of the blade.',
+                count: 2,
+                x: 297, y: 324},  //Temporary locations
+                {name: 'Table Trunnion Adjustment Knobs',
+                description: 'Loosens the table on the trunnions for tilt adjustments and locks and table in place at a desired angle.',
+                count: 2,
+                x: 335, y: 440},  //Temporary locations
+                {name: 'Table Tilt Scale',
+                description: 'Displays the current angle of table tilt',
+                count: 1,
+                x: 220, y: 460}  //Temporary locations
             ],
             rear: [
                 {name: 'Blade Tension Adjustment Knob',
