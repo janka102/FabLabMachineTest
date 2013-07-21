@@ -195,7 +195,7 @@ div[ng-view] {
     background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
     */
     
-    /* Image replica of above - a lot of current browsers cannot do the 90deg */
+    /* Image replica of above - a lot of current browsers cannot do the 90deg rotation */
     background-image: url("../img/grid.png");
     background-size: 100px 100px;
     background-position: -2px -2px;
@@ -288,7 +288,7 @@ div[ng-view] {
     margin-bottom: 35px;
 }
 
-/*** details.html ***/
+/**************************** details.html ****************************/
 .machine-title {
     text-align: center;
 }
@@ -302,22 +302,23 @@ div[ng-view] {
        -moz-border-radius: 6px;
             border-radius: 6px;
             
-    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, .065);
-       -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, .065);
-            box-shadow: 0 1px 4px rgba(0, 0, 0, .065);
+    -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+       -moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
 }
 
 .part {
     position: relative;
-    cursor: move;
-    cursor: grab;
-    cursor: -moz-grab;
-    cursor: -webkit-grab;
     
-    background-color: #FFF;
+    cursor: move;
+    cursor: -webkit-grab;
+    cursor:    -moz-grab;
+    cursor:         grab;
+    
+    background-color: #FFFFFF;
     padding: 5px 9px;
     margin: 0 0 -1px;
-    border: 1px solid #E5E5E5;
+    border: 1px solid #C4C4C4;
 }
 
 .part:first-of-type {
@@ -349,11 +350,7 @@ div[ng-view] {
 }
 
 .part:not(.ui-state-disabled):hover {
-    background-color: #F5F5F5;
-}
-
-.part:not(.ui-state-disabled):hover .part-description {
-    background: #E9E9E9;
+    background-color: #E4E4E4;
 }
 
 .part-letter {
@@ -389,9 +386,9 @@ div[ng-view] {
     margin-top: 5px;
     font-size: 0.85em;
     background: #F9F9F9;
-    border-left: 1px solid #0088CC;
+    border-left: 5px solid #0088CC;
     border-radius: 4px;
-    box-shadow: 0 0 5px #CCCCCC inset;
+    box-shadow: 0 0 5px #555555 inset;
 }
 
 .parts-list .ui-draggable-dragging {
@@ -404,20 +401,43 @@ div[ng-view] {
     border: 2px solid #0088CC;
     
     cursor: move;
-    cursor: grabbing;
-    cursor: -moz-grabbing;
     cursor: -webkit-grabbing;
+    cursor:    -moz-grabbing;
+    cursor:         grabbing;
 }
 
 .part-drop {
     position: absolute;
     height: 20px;
     width: 20px;
-    background: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    color: #ffffff;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0);
     border-radius: 20px;
-    border: 2px solid #0088CC;
+    border: 3px solid #0088CC;
+}
+
+.part-drop.ui-state-highlight {
+    background: rgba(0, 0, 0, 0.75);
+    
+    cursor: move;
+    cursor: -webkit-grab;
+    cursor:    -moz-grab;
+    cursor:         grab;
+}
+
+.part-drop.ui-state-hover {
+    background: rgba(255, 255, 255, 0.4);
+    border-color: #CC0088;
+    color: rgba(0, 0, 0, 0);
 }
 
 .machine-view {
     position: relative;
+}
+
+.machine-view img {
+    -webkit-user-drag: none;
+            user-drag: none;
 }
