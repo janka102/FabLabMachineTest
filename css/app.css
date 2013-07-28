@@ -5,17 +5,28 @@
 	        user-select: none;
 }
 
+img[draggable="false"] {
+    -webkit-user-drag: none;
+            user-drag: none;
+}
+
 /* used for part of jumbotron */
+/*
 @font-face {
-    font-family: 'Bebas';
-    src: url('./fonts/Bebas/Bebas.eot');
-    src: url('./fonts/Bebas/Bebas.eot?#iefix') format('embedded-opentype'),
-         url('./fonts/Bebas/Bebas.woff') format('woff'),
-         url('./fonts/Bebas/Bebas.ttf') format('truetype'),
-         url('./fonts/Bebas/Bebas.svg#Bebas') format('svg');
+    font-family: 'Alternate Gothic';
+    src: url('fonts/AlternateGothic/AlternateGothic.eot');
+    src: local('☺'), url('fonts/AlternateGothic/AlternateGothic.woff') format('woff'), url('fonts/AlternateGothic/AlternateGothic.ttf') format('truetype'), url('fonts/AlternateGothic/AlternateGothic.svg') format('svg');
     font-weight: bold;
     font-style: normal;
 }
+@font-face {
+    font-family: 'Ayar Kasone';
+    src: url('fonts/AyarKasone/AyarKasone.eot');
+    src: local('☺'), url('fonts/AyarKasone/AyarKasone.woff') format('woff'), url('fonts/AyarKasone/AyarKasone.ttf') format('truetype'), url('fonts/AyarKasone/AyarKasone.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+*/
 
 /* Large/Desktop */
 @media (max-width: 979px) {
@@ -31,17 +42,21 @@ div[ng-view] {
 
 /* Medium/Tablet */
 @media (max-width: 767px) {
-.masthead h1 {
-    font-size: 65px !important;
+.jumbotron {
+    padding: 40px !important;
 }
 
-.masthead p {
-    font-size: 24px !important;
+.jumbotron img {
+    height: 250px !important;
+}
+
+.jumbotron:after {
+    background-size: 71px 71px !important;
 }
 
 #wrap > div[ng-view] {
     margin-left: -20px;
-    margin-right: -20px;
+    margin-right: 0px;
 }
 
 .container .marketing .row-fluid .machine {
@@ -52,12 +67,32 @@ div[ng-view] {
     margin-bottom: 0;
 }
 
+.machine > h2 {
+    opacity: 1 !important;
+}
+
 }
 
 /* Small/Phone */
 @media (max-width: 480px) {
-.marketing h1 {
-    font-size: 30px !important;
+body {
+    padding: 0 !important;
+}
+
+.navbar {
+    padding: 0 20px !important;
+}
+
+.jumbotron {
+    padding: 20px !important;
+}
+
+.jumbotron img {
+    height: 200px !important;
+}
+
+.jumbotron:after {
+    background-size: 57px 57px !important;
 }
 
 .marketing-byline {
@@ -91,8 +126,8 @@ footer {
 
     text-align: center;
     padding: 15px 0;
-    border-top: 1px solid #E5E5E5;
-    background-color: #F5F5F5;
+    border-top: 1px solid #C0C0C0;
+    background-color: #EBEBEB;
 }
 
 footer p {
@@ -117,16 +152,16 @@ div[ng-view] {
 
 /* jumbotron adapted from Twitter Bootstrap jumbotron */
 .jumbotron {
-    padding: 30px 0 40px;
+    padding: 60px;
     position: relative;
     color: #fff;
     text-align: center;
     text-shadow: 0 1px 3px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.075);
     background: #204EC5; /* Old browsers */
-    background: -webkit-linear-gradient(45deg, #204EC5 0%, #9c9c9c 100%);
-    background:    -moz-linear-gradient(45deg, #204EC5 0%, #9c9c9c 100%);
-    background:      -o-linear-gradient(45deg, #204EC5 0%, #9c9c9c 100%);
-    background:         linear-gradient(45deg, #204EC5 0%, #9c9c9c 100%);
+    background: -webkit-linear-gradient(45deg, #164299 0%, #4069D6 100%);
+    background:    -moz-linear-gradient(45deg, #164299 0%, #4069D6 100%);
+    background:      -o-linear-gradient(45deg, #164299 0%, #4069D6 100%);
+    background:         linear-gradient(45deg, #164299 0%, #4069D6 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#204EC5', endColorstr='#9c9c9c',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
     -webkit-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.2), inset 0 -3px 7px rgba(0, 0, 0, 0.2);
@@ -134,22 +169,8 @@ div[ng-view] {
             box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.2), inset 0 -3px 7px rgba(0, 0, 0, 0.2);
 }
 
-.jumbotron h1 {
-    font-size: 80px;
-    font-weight: bold;
-    letter-spacing: -1px;
-    line-height: 1;
-    margin-top: 0;
-}
-
-.jumbotron p {
-    text-transform: uppercase;
-    font-size: 36px;
-    font-family: 'Bebas';
-    font-weight: bold;
-    letter-spacing: 2px;
-    line-height: 1.25;
-    margin-bottom: 0;
+.jumbotron img {
+    height: 350px;
 }
 
 .jumbotron .container {
@@ -217,7 +238,7 @@ div[ng-view] {
 .marketing a.machine {
     color: #545454;
     position: relative;
-    border: 1px solid #DDD;
+    border: 1px solid #B6B6B6;
     border-radius: 4px;
     height: 340px;
     background-position: center 0;
@@ -227,9 +248,9 @@ div[ng-view] {
        -moz-background-size: 300px;
             background-size: 300px;
 
-    -webkit-box-shadow: 0 1px 5px #DDD;
-       -moz-box-shadow: 0 1px 5px #DDD;
-            box-shadow: 0 1px 5px #DDD;
+    -webkit-box-shadow: inset 0 1px 5px #999999;
+       -moz-box-shadow: inset 0 1px 5px #999999;
+            box-shadow: inset 0 1px 5px #999999;
 
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
@@ -240,9 +261,9 @@ div[ng-view] {
 .marketing a.machine:hover, .marketing a.machine:active {
     text-decoration: none;
     
-    -webkit-box-shadow: 0 0 3px #DDD;
-       -moz-box-shadow: 0 0 3px #DDD;
-            box-shadow: 0 0 3px #DDD;
+    -webkit-box-shadow: inset 0 0 3px #999999;
+       -moz-box-shadow: inset 0 0 3px #999999;
+            box-shadow: inset 0 0 3px #999999;
 }
 
 .marketing .marketing-byline {
@@ -289,6 +310,31 @@ div[ng-view] {
 }
 
 /**************************** details.html ****************************/
+.details {
+    position: relative;
+}
+
+.alert {
+    position: fixed;
+    top: 35px;
+    left: 0;
+    width: 50%;
+    margin-left: 25%;
+    text-align: center;
+    z-index: 9001;
+}
+
+.alert-error {
+    background-color: rgba(242, 222, 222, 0.93);
+}
+
+.container > .row-fluid {
+    margin: 20px 10px;
+    padding: 10px;
+    box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+}
+
 .machine-title {
     text-align: center;
 }
@@ -301,10 +347,6 @@ div[ng-view] {
     -webkit-border-radius: 6px;
        -moz-border-radius: 6px;
             border-radius: 6px;
-            
-    -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
-       -moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
-            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
 }
 
 .part {
@@ -382,7 +424,8 @@ div[ng-view] {
 .part-description {
     display: block;
     color: #333;
-    padding: 0 5px;
+    padding: 3px 5px 6px 5px;
+    line-height: 1.5em;
     margin-top: 5px;
     font-size: 0.85em;
     background: #F9F9F9;
@@ -391,7 +434,7 @@ div[ng-view] {
     box-shadow: 0 0 5px #555555 inset;
 }
 
-.parts-list .ui-draggable-dragging {
+.ui-draggable-dragging {
     height: 20px;
     width: 20px;
     background-color: #FFFFFF;
@@ -413,7 +456,7 @@ div[ng-view] {
     text-align: center;
     color: #ffffff;
     font-weight: bold;
-    background: rgba(255, 255, 255, 0);
+    background: rgba(0, 0, 0, 0);
     border-radius: 20px;
     border: 3px solid #0088CC;
 }
@@ -429,15 +472,15 @@ div[ng-view] {
 
 .part-drop.ui-state-hover {
     background: rgba(255, 255, 255, 0.4);
-    border-color: #CC0088;
+}
+
+.part-drop.ui-draggable-disabled {
+    background: rgba(0, 0, 0, 0);
+}
+.part-drop.ui-state-hover, .part-drop.ui-draggable-disabled {
     color: rgba(0, 0, 0, 0);
 }
 
 .machine-view {
     position: relative;
-}
-
-.machine-view img {
-    -webkit-user-drag: none;
-            user-drag: none;
 }
