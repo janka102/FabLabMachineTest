@@ -1,19 +1,27 @@
-<div class="container">
+<div class="container details">
     <h2 class="machine-title">{{machine.name}}</h2>
     <div class="row-fluid" ng-repeat="(viewName, view) in machine.views">
         <div class="span3">
             <ol class="parts-list">
-                <li class="part" ng-repeat="part in view" data-part-id="{{partId}}" draggable="{scope: viewName, helper: {letter: alphabet[$index], view: viewName}}" ng-init="partId = viewName + alphabet[$index]">
+                <li class="part" ng-repeat="part in view" ui-draggable="{scope: viewName, helper: {letter: alphabet[$index]}}" ng-init="partId = viewName + alphabet[$index];" add-part-id>
                     <span class="part-letter">{{alphabet[$index]}}</span>
                     <span class="part-name">{{part.name}}</span>
-                    <i class="icon-question-sign get-description ui-icon" ng-click="toggle(partId)" title="Toggle description"></i>
-                    <span class="part-description ui-helper-hidden-accessible {{viewName}}{{alphabet[$index]}}">{{part.description}}</span>
+                    <i class="icon-question-sign get-description ui-icon" ng-click="toggle($event)" title="Hint" data-toggle="tooltip"></i>
+                    <span class="part-description ui-helper-hidden-accessible">{{part.description}}</span>
                 </li>
             </ol>
         </div>
         <div class="span9 machine-view">
-            <div data-part-id="{{partId}}" class="part-drop" ng-repeat="part in view" ng-style="styleLocation(part)" droppable="{accept: viewname, scope: viewName}" ng-init="partId = viewName + alphabet[$index];"></div>
-            <img src="img/{{machine.id}}/{{viewName}}.png">
+            <div class="part-group" ng-repeat="part in view" ng-init="partId = viewName + alphabet[$index];" add-part-id>
+                <div class="part-drop" ng-repeat="i in makeArray(part.count)" ui-droppable="{accept: viewname, scope: viewName}" ui-rearrange="{scope: viewName}" style-part="{part: part, count: $index, viewIndex: $parent.$parent.$index}"></div>
+            </div>
+            
+            <img src="img/{{machine.id}}/{{viewName}}.png" draggable="false" unselectable="on" ondragstart="function(){return false;}">
         </div>
+    </div>
+    <div id="check-parts">
+        <button type="button" class="btn" onclick="resetParts();">Reset</button>
+        <button type="button" class="btn btn-primary" onclick="checkSubmit();">Submit</button>
+        <p class="score"><p>
     </div>
 </div>
