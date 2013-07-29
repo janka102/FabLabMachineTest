@@ -1,0 +1,22 @@
+{
+  "name": "FabLabMachineTest",
+  "version": "0.0.1",
+  "author": "janka102",
+  "description": "A way for students to quiz themselves",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "fablab",
+    "woodshop",
+    "http",
+    "server"
+  ],
+  "dependencies" : {
+    "connect"   :  "2.x"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.6"
+  }
+}
