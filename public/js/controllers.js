@@ -185,92 +185,92 @@ var machines = [
 
         {name: 'Routers',
         id: 'routers',
-        views: { //Temporary locations
+        views: {
             inTable_front: [
                 {name: 'Housing Index Line',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 203, y0: 227},
                 
                 {name: 'Base Handle',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 369, y0: 323},
                 
                 {name: 'Zero-Line',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 205, y0: 264},
                 
                 {name: 'Clamp Screw',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 102, y0: 332},
                 
                 {name: 'Motor',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 265, y0: 100},
                 
                 {name: 'Depth Adjusting Ring',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257}
+                x0: 100, y0: 243}
             ],
             inTable_top: [
                 {name: 'On/Off Switch',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 208, y0: 110},
                 
                 {name: 'Variable Speed Control',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257}
+                x0: 5, y0: 86}
             ],
             handheld_front: [
                 {name: 'Collet Nut',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 166, y0: 357},
                 
-                {name: 'Switch',
+                {name: 'On/Off Switch',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 169, y0: 79},
                 
                 {name: 'Depth Adjusting Ring',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 220, y0: 184},
                 
                 {name: 'Clamp Knob',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257}
+                x0: 80, y0: 259}
             ],
             handheld_side: [
                 {name: 'Sub-Base',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 255, y0: 392},
                 
                 {name: 'Motor Unit',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 230, y0: 99},
                 
                 {name: 'Base unit',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 93, y0: 260},
                 
                 {name: 'Ring Spring',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257}
+                x0: 154, y0: 194}
             ],
-            bits: [
+            bits: [  //Temporary locations
                 {name: 'Core Box',
                 description: '',
                 count: 1,
@@ -315,78 +315,78 @@ var machines = [
 
         {name: 'Jointer',
         id: 'jointer',
-        views: { //Temporary locations
+        views: {
             front: [
                 {name: 'Fence',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 270, y0: 27},
                 
                 {name: 'Base',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 260, y0: 255},
                 
                 {name: 'On/Off Switch',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 256, y0: 149},
                 
                 {name: 'Rear Outfeed Table',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 10, y0: 85},
                 
                 {name: 'Guard',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 194, y0: 57},
                 
                 {name: 'Front Table Adjustment',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 255, y0: 77},
                 
                 {name: 'Rear Table Adjustment',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 141, y0: 93},
                 
                 {name: 'Front Table Infeed',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 360, y0: 40},
                 
                 {name: 'Fence Control Handle',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257}
+                x0: 232, y0: -3}
             ],
             cuts: [
                 {name: 'Edge & End Planing',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 350, y0: 119},
                 
                 {name: 'Face Planing',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 172, y0: 435},
                 
                 {name: 'Rabbet',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 170, y0: 12},
                 
                 {name: 'Chamfer',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 170, y0: 220},
                 
                 {name: 'Bevel',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 351, y0: 329},
             ]
         }},
 
@@ -402,62 +402,62 @@ var machines = [
 
         {name: 'Table Saw',
         id: 'tablesaw',
-        views: { //Temporary locations
+        views: {
             front: [
                 {name: 'Table Insert',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 252, y0: 76},
                 
                 {name: 'Rip Fence',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 445, y0: 31},
                 
                 {name: 'Elevation Hand Wheel',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 361, y0: 228},
                 
                 {name: 'On/Off Paddle',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 275, y0: 242},
                 
                 {name: 'Tilt Hand Wheel',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 190, y0: 257},
                 
                 {name: 'Table Top',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 130, y0: 117},
                 
                 {name: 'Blade Guard',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 270, y0: 34},
                 
                 {name: 'Rip Fence Scale',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 480, y0: 110},
                 
                 {name: 'System Switch',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 300, y0: 198},
                 
                 {name: 'Miter Guage Slot',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 277, y0: 111},
                 
                 {name: 'Tilt Angle Scale',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257}
+                x0: 407, y0: 239}
             ]
         }}
     ],
