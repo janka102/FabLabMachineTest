@@ -62,14 +62,14 @@ function checkSubmit(){
     percent = (numCorrect / partsLength) * 100;
     
     switch(true) {
-    // [0, 60] is red
-    case (percent >= 0 && percent <= 60):
+    // [0, 70] is red
+    case (percent >= 0 && percent <= 70):
         cssClass = 'text-error';
         message = bad[Math.floor(Math.random() * bad.length)];
         break;
         
-    // (60, 90) is yellow
-    case (percent > 60 && percent < 90):
+    // (70, 90) is yellow
+    case (percent > 70 && percent < 90):
         cssClass = 'text-warning';
         message = medium[Math.floor(Math.random() * medium.length)];
         break;
