@@ -1,6 +1,7 @@
 'use strict';
 
-var dragOps = {
+var VIEW_NAME_REGEX = new RegExp(/[a-zA-Z_]+[a-z]/g),
+dragOps = {
     addClass: false,
     cursorAt: { left: 17, top: 17 },
     revert: 'invalid',
@@ -39,7 +40,7 @@ dropOps = {
         selfGroup = self.add(self.siblings()),
         prevPart = ui.draggable,
         prevGroup = prevPart.add(prevPart.siblings()),
-        letter = prevPart.data('part-id').replace(/[a-z]/g, ''), // remove lowercase letters to leave the single uppercase part letter
+        letter = prevPart.data('part-id').replace(VIEW_NAME_REGEX, ''), // remove lowercase letters to leave the single uppercase part letter
         oldID = self.data('part-id');
         //console.log('drop-drop', self);
         
@@ -89,7 +90,7 @@ dropOps = {
                     selfGroup.text(prevPart.text());
                     
                     prevGroup.data('part-id', oldID);
-                    prevGroup.text(oldID.replace(/[a-z]/g, ''));
+                    prevGroup.text(oldID.replace(VIEW_NAME_REGEX, ''));
                     
                     return;
                 }
@@ -174,7 +175,7 @@ app.directive('uiDraggable', function() {
             options.scope = vars.scope;
             
             options.helper = function(event) {
-                return $('<div></div>').text(elem.data('part-id') ? elem.data('part-id').replace(/[a-z]/g, '') : '');
+                return $('<div></div>').text(elem.data('part-id') ? elem.data('part-id').replace(VIEW_NAME_REGEX, '') : '');
             };
             
             elem.draggable(options);
@@ -189,6 +190,21 @@ app.directive('uiDraggable', function() {
             //console.log(elem.data('part-id'));
         }
     };
+}).directive('addPartDescription', function(){
+    return {
+        restrict: 'A',
+        link: function(scope, elem, attrs) {
+            var icon, description;
+
+            if (scope.part.description) {
+                icon = $('<i class="icon-question-sign get-description ui-icon" title="Hint" data-toggle="tooltip"></i>').click(function(){scope.toggle(event)});
+                description = $('<span class="part-description ui-helper-hidden-accessible">' + scope.part.description + '</span>');
+                
+                elem.append(icon).append(description);
+                console.log('description', elem);
+            }
+        }
+    };
 }).directive('stylePart', function() {
     return {
         restrict: 'A',
@@ -199,7 +215,7 @@ app.directive('uiDraggable', function() {
                 viewIndex = vars.viewIndex,
                 borderColors = scope.borderColors,
                 
-                style = {top: part['y' + count], left: part['x' + count]},
+                style = {left: part['x' + count], top: part['y' + count]},
                 colors = scope.colors,
                 currentColor,
                 randColor = function() {
