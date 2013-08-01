@@ -1,6 +1,6 @@
 <div class="container details">
     <h2 class="machine-title">{{machine.name}}</h2>
-    <div class="row-fluid" ng-repeat="(viewName, view) in machine.views">
+    <div class="row-fluid well" ng-repeat="(viewName, view) in machine.views">
         <div class="span3">
             <ol class="parts-list">
                 <li class="part" ng-repeat="part in view" ui-draggable="{scope: viewName, helper: {letter: alphabet[$index]}}" ng-init="partId = viewName + alphabet[$index];" add-part-id add-part-description>
@@ -15,6 +15,7 @@
             </div>
             
             <img src="img/{{machine.id}}/{{viewName}}.png" draggable="false" unselectable="on" ondragstart="function(){return false;}">
+            <p class="score"></p>
         </div>
     </div>
     <div id="check-parts">
