@@ -238,15 +238,11 @@ div[ng-view] {
 .marketing a.machine {
     color: #545454;
     position: relative;
-    border: 1px solid #B6B6B6;
     border-radius: 4px;
     height: 340px;
+    padding: 0;
     background-position: center 0;
     background-repeat: no-repeat;
-
-    -webkit-box-shadow: inset 0 1px 5px #999999;
-       -moz-box-shadow: inset 0 1px 5px #999999;
-            box-shadow: inset 0 1px 5px #999999;
 
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
@@ -256,10 +252,6 @@ div[ng-view] {
 
 .marketing a.machine:hover, .marketing a.machine:active {
     text-decoration: none;
-    
-    -webkit-box-shadow: inset 0 0 3px #999999;
-       -moz-box-shadow: inset 0 0 3px #999999;
-            box-shadow: inset 0 0 3px #999999;
 }
 
 .marketing .marketing-byline {
@@ -327,7 +319,6 @@ div[ng-view] {
 .container > .row-fluid {
     margin: 20px 10px;
     padding: 10px;
-    box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.5);
     border-radius: 6px;
 }
 
