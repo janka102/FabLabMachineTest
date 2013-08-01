@@ -73,72 +73,72 @@ var machines = [
                 {name: 'Belt and Pully Housing',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 180, y0: 7},
                 
                 {name: 'Base',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 100, y0: 812},
                 
                 {name: 'Variable Speed Control',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 48, y0: 43},
                 
                 {name: 'On/Off Switch',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 68, y0: 124},
                 
                 {name: 'Quill Lock',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 115, y0: 187},
                 
                 {name: 'Column',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 168, y0:517},
                 
                 {name: 'Quill Feed Lever',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 202, y0: 211},
                 
                 {name: 'Depth Stop',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 73, y0: 208},
                 
                 {name: 'Motor',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 226, y0: 130},
                 
                 {name: 'Speed Range Control',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 258, y0: 40},
                 
                 {name: 'Tilting Table',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 70, y0: 350},
                 
                 {name: 'Spindle',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 100, y0: 217},
                 
                 {name: 'Rack and Pinion Mechanism',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 196, y0: 386},
                 
                 {name: 'Chuck',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257}
+                x0: 100, y0: 248}
             ],
             bits: [
                 {name: 'Spade bit',
@@ -274,42 +274,42 @@ var machines = [
                 {name: 'Core Box',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 195, y0: 287},
                 
                 {name: 'Cove',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 128, y0: 457},
                 
                 {name: 'Rabbeting',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 221, y0: 120},
                 
                 {name: 'Chamfer 45° Bevel',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 63, y0: 288},
                 
                 {name: 'Straight One Piece',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 65, y0: 124},
                 
                 {name: 'V Grooveing',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 299, y0: 455},
                 
                 {name: 'Dovetail',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 358, y0: 292},
                 
                 {name: 'Corner Rounding',
                 description: '',
                 count: 1,
-                x0: 480, y0: 257}
+                x0: 386, y0: 117}
             ]
         }},
 
