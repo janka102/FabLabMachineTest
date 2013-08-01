@@ -34,8 +34,6 @@ dropOps = {
         self.add(self.siblings()).removeClass('ui-state-hover');
     },
     drop: function(event, ui) {
-        $('.alert-error').remove();
-        
         var self = $(this),
         selfGroup = self.add(self.siblings()),
         prevPart = ui.draggable,
@@ -43,6 +41,13 @@ dropOps = {
         letter = prevPart.data('part-id').replace(VIEW_NAME_REGEX, ''), // remove lowercase letters to leave the single uppercase part letter
         oldID = self.data('part-id');
         //console.log('drop-drop', self);
+
+        if (self.parents('.machine-view').find('.score span').length) {
+            self.parents('.machine-view').find('.score').html('');
+        }
+        if ($('#check-parts').find('.score span').length) {
+            $('#check-parts').find('.score').html('');
+        }
         
         if (selfGroup.hasClass('ui-state-hover')) { selfGroup.removeClass('ui-state-hover'); }
         
@@ -201,7 +206,7 @@ app.directive('uiDraggable', function() {
                 description = $('<span class="part-description ui-helper-hidden-accessible">' + scope.part.description + '</span>');
                 
                 elem.append(icon).append(description);
-                console.log('description', elem);
+                // console.log('description', elem);
             }
         }
     };
@@ -220,10 +225,15 @@ app.directive('uiDraggable', function() {
                 currentColor,
                 randColor = function() {
                     if (colors.currentviewIndex !== viewIndex) {
-                        //console.log('currentviewIndex:', colors.currentviewIndex, 'viewIndex:', viewIndex);
+                        // console.log('currentviewIndex:', colors.currentviewIndex, 'viewIndex:', viewIndex);
+
+                        // reset
+                        scope.colors.currentIndex = null;
+
                         colors.currentviewIndex = viewIndex;
                         colors.colors = borderColors.slice(0);
-                        //console.log(borderColors);
+
+                        // console.log(borderColors);
                     }
                     
                     if (colors.currentPart !== part.name) {
@@ -239,7 +249,9 @@ app.directive('uiDraggable', function() {
                     currentColor = colors.colors[colors.currentIndex];
                     
                     scope.colors = colors;
-                    //console.log(colors.colors, colors.currentIndex, currentColor);
+                    
+                    // console.log(colors.colors, colors.currentIndex, currentColor);
+                    
                     return currentColor;
                 };
             
