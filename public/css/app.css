@@ -472,3 +472,8 @@ div[ng-view] {
 .machine-view {
     position: relative;
 }
+
+.score {
+    padding-top: 10px;
+    margin-bottom: 0;
+}
