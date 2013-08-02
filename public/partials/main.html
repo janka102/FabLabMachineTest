@@ -9,15 +9,11 @@
     <div class="marketing">
         <h1>The Machines.</h1>
         <p class="marketing-byline">Want to get to know them? Here they are.</p>
-        <div class="row-fluid">
-            <a href="#/{{machine.id}}" class="span4 machine well" style="background-image: url(img/{{machine.id}}/home_page.png)" ng-repeat="machine in machines | limitTo:3">
+        <div class="row-fluid" ng-repeat="row in machineRows">
+            <a href="#/{{machine.id}}" class="span4 machine well" style="background-image: url(img/{{machine.id}}/home_page.png)" ng-repeat="col in machineCols" ng-init="machine = machines[$parent.$index * numColumns + $index]">
                 <h2 class="title">{{machine.name}}</h2>
             </a>
         </div>
-        <div class="row-fluid">
-            <a href="#/{{machine.id}}" class="span4 machine well" style="background-image: url(img/{{machine.id}}/home_page.png)" ng-repeat="machine in machines | startFrom:3 | limitTo:3">
-                <h2 class="title">{{machine.name}}</h2>
-            </a>
         </div>
     </div>
 </div>
