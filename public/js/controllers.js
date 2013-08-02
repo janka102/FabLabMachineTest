@@ -469,6 +469,12 @@ var machines = [
 
 function MainCtrl($scope) {
     $scope.machines = machines;
+
+    $scope.numColumns = 3;
+    $scope.machineRows = [];
+    $scope.machineRows.length = Math.ceil($scope.machines.length / $scope.numColumns);
+    $scope.machineCols = [];
+    $scope.machineCols.length = $scope.numColumns;
 }
 
 function NavCtrl($scope, $location) {
@@ -497,6 +503,15 @@ function NavCtrl($scope, $location) {
 function MachineCtrl($scope, $location, $routeParams) {
     var paramMachine = $routeParams.machine,
         validMachine = false;
+
+        function array_shuffle (aArray) {
+            for (var mTemp, j, i = aArray.length; i; ) {
+                j = parseInt(Math.random() * i);
+                mTemp = aArray[--i];
+                aArray[i] = aArray[j];
+                aArray[j] = mTemp;
+            }
+        }
     
     for (var i = 0, len = machines.length; i < len; i++) {
         if (machines[i].id === paramMachine) {
@@ -511,15 +526,23 @@ function MachineCtrl($scope, $location, $routeParams) {
         return;
     }
     
+    // For randomizing the part order
+    for (var view in $scope.machine.views) {
+        if ($scope.machine.views.hasOwnProperty(view)) {
+            array_shuffle($scope.machine.views[view]);
+        }
+    }
+
     // For displaying the parts
     $scope.alphabet = alphabet;
     
+    // Used for the random border colors on the .part-drop
     $scope.borderColors = borderColors;
     $scope.colors = {currentPart: null, currentIndex: null, currentViewIndex: null, colors: null};
     
     // Returns a array of length `num`. Used in `ng-repeat` to repeat `num` times
     $scope.makeArray = function(num) {
-        return new Array(num);   
+        return new Array(num);
     };
     
     // Toggles the description of each part
