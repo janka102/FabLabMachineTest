@@ -32,33 +32,36 @@ function checkSubmit(){
         partsLength = 0,
         incompleteViews = 0,
         score = function(percent) {
-            var bad = [':O', ':(', '(O.O)', 'ಠ╭╮ಠ', 'ರ_ರ', 'you should probably try again'],
+            var bad = [':(', '(O.O)', 'ಠ╭╮ಠ', 'ರ_ರ', 'you should probably try again'],
                 medium = ['maybe next time you\'ll get it'],
-                good = [':)', '(^∇^)', '◕‿◕', '☺', 'very good!'],
+                good = [':)', '(^∇^)', '◕‿◕', 'very good!'],
                 cssClass = '',
-                scoreMessage = '';
+                scoreMessage = '',
+                getRand = function(array) {
+                    return array[Math.floor(Math.random() * array.length)];
+                };
 
             switch(true) {
             // [0, 70] is red
             case (percent >= 0 && percent <= 70):
                 cssClass = 'text-error';
-                scoreMessage = bad[Math.floor(Math.random() * bad.length)];
+                scoreMessage = getRand(bad);
                 break;
                 
             // (70, 90) is yellow
             case (percent > 70 && percent < 90):
                 cssClass = 'text-warning';
-                scoreMessage = medium[Math.floor(Math.random() * medium.length)];
+                scoreMessage = getRand(medium);
                 break;
                 
             // [90, 100] is green
             default:
                 cssClass = 'text-success';
-                scoreMessage = good[Math.floor(Math.random() * good.length)];
+                scoreMessage = getRand(good);
             }
 
             return {'klass': cssClass, 'message': scoreMessage};
-        }
+        };
 
     machineViews.each(function(index){
         var self = $(this),
@@ -73,11 +76,11 @@ function checkSubmit(){
 
         if (filledviewPartsLength === 0) {
             incompleteViews += 1;
-            self.find('.score').html(message1.replace('%msg%', 'You did not fill in any parts!'));
+            self.siblings().find('.score').html(message1.replace('%msg%', 'You did not fill in any parts!'));
             return;
         } else if (filledviewPartsLength < viewPartsLength) {
             incompleteViews += 1;
-            self.find('.score').html(message1.replace('%msg%', 'You forgot ' + (viewPartsLength - filledviewPartsLength) + ' part' + ((viewPartsLength - filledviewPartsLength) !== 1 ? 's' : '') + '!'));
+            self.siblings().find('.score').html(message1.replace('%msg%', 'You forgot ' + (viewPartsLength - filledviewPartsLength) + ' part' + ((viewPartsLength - filledviewPartsLength) !== 1 ? 's' : '') + '!'));
             return;
         }
 
@@ -99,7 +102,7 @@ function checkSubmit(){
         // console.log(this, percent, scoreMessage);
 
         if (machineViews.length > 1) {
-            self.find('.score').html(message2.replace(/text-[a-z]+/, scoreObj.klass).replace('%msg%', 'You got ' + viewNumCorrect + ' out of ' + viewPartsLength + ' correct, that\'s ' + percent.toFixed(2) + '%... ' + scoreObj.message));
+            self.siblings().find('.score').html(message2.replace(/text-[a-z]+/, scoreObj.klass).replace('%msg%', 'You got ' + viewNumCorrect + ' out of ' + viewPartsLength + ' correct, that\'s ' + percent.toFixed(2) + '%... ' + scoreObj.message));
         }
     
         if (index === machineViews.length - 1 && incompleteViews === 0) {
