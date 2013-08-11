@@ -2,9 +2,13 @@
   "name": "FabLabMachineTest",
   "version": "0.0.1",
   "author": "janka102",
-  "description": "A way for students to quiz themselves",
+  "description": "A way for students to quiz themselves on the woodshop machine tests.",
   "scripts": {
     "start": "node server.js"
+  },
+   "repository": {
+    "type": "git",
+    "url": "https://github.com/janka102/FabLabMachineTest.git"
   },
   "keywords": [
     "fablab",
