@@ -39,14 +39,12 @@ dropOps = {
         prevPart = ui.draggable,
         prevGroup = prevPart.add(prevPart.siblings()),
         letter = prevPart.data('part-id').replace(VIEW_NAME_REGEX, ''), // remove lowercase letters to leave the single uppercase part letter
-        oldID = self.data('part-id');
+        oldID = self.data('part-id'),
+        score = self.parents('.machine-view').siblings().find('.score').add($('#check-parts').find('.score'));
         //console.log('drop-drop', self);
 
-        if (self.parents('.machine-view').find('.score span').length) {
-            self.parents('.machine-view').find('.score').html('');
-        }
-        if ($('#check-parts').find('.score span').length) {
-            $('#check-parts').find('.score').html('');
+        if (score.length) {
+            score.html('');
         }
         
         if (selfGroup.hasClass('ui-state-hover')) { selfGroup.removeClass('ui-state-hover'); }
@@ -220,7 +218,7 @@ app.directive('uiDraggable', function() {
                 viewIndex = vars.viewIndex,
                 borderColors = scope.borderColors,
                 
-                style = {left: part['x' + count], top: part['y' + count]},
+                style = {left: part['x' + count] + '%', top: part['y' + count] + '%'},
                 colors = scope.colors,
                 currentColor,
                 randColor = function() {
