@@ -8,14 +8,16 @@
                     <span class="part-name">{{part.name}}</span>
                 </li>
             </ol>
+            <p class="score"></p>
         </div>
         <div class="span9 machine-view">
-            <div class="part-group" ng-repeat="part in view" ng-init="partId = viewName + alphabet[$index];" add-part-id>
-                <div class="part-drop" ng-repeat="i in makeArray(part.count)" ui-droppable="{accept: viewname, scope: viewName}" ui-rearrange="{scope: viewName}" style-part="{part: part, count: $index, viewIndex: $parent.$parent.$index}"></div>
+            <div class="drop-wrapper">
+                <div class="part-group" ng-repeat="part in view" ng-init="partId = viewName + alphabet[$index];" add-part-id>
+                    <div class="part-drop" ng-repeat="i in makeArray(part.count)" ui-droppable="{accept: viewname, scope: viewName}" ui-rearrange="{scope: viewName}" style-part="{part: part, count: $index, viewIndex: $parent.$parent.$index}"></div>
+                </div>
+                
+                <img ng-src="img/{{machine.id}}/{{viewName}}.png" draggable="false" unselectable="on" ondragstart="function(){return false;}">
             </div>
-            
-            <img src="img/{{machine.id}}/{{viewName}}.png" draggable="false" unselectable="on" ondragstart="function(){return false;}">
-            <p class="score"></p>
         </div>
     </div>
     <div id="check-parts">

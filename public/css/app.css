@@ -469,8 +469,9 @@ div[ng-view] {
     color: rgba(0, 0, 0, 0);
 }
 
-.machine-view {
+.drop-wrapper {
     position: relative;
+    float: left;
 }
 
 .score {
