@@ -11,7 +11,3 @@ Live view at [http://tinyurl.com/fablab503](http://tinyurl.com/fablab503)
  * [AngularJS](http://angularjs.org/)
  * [Twitter Bootstrap](http://twitter.github.io/bootstrap/)
  * [NodeJS](http://nodejs.org/)
-
-## License
-
-This project is available under the [MIT](http://opensource.org/licenses/MIT) license.
