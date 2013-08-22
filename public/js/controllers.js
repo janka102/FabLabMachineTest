@@ -141,46 +141,46 @@ var machines = [
                 count: 1,
                 x0: 34.5, y0: 27.2}
             ],
-            bits: [ //Temp locations
+            bits: [
                 {name: 'Spade bit',
                 description: 'The long point makes it easy to locate the hole exactaly where you want.',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 34.8, y0: 27.6},
                 
                 {name: 'Multispur bit',
                 description: 'Bores very clean holes at any angle. It should be used only in a drill press.',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 23.6, y0: 63.1},
                 
                 {name: 'Hole saw',
                 description: 'Cuts large holes in wood, plastic, and thin metal. It is mounted onto a special arbor with a bit in he middle to guide the saw into the wood in the correct location.',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 68.6, y0: 55.1},
                 
                 {name: 'Twist bit',
                 description: 'Designed for wood.',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 72.9, y0: 9.7},
                 
                 {name: 'Forstner bit',
                 description: 'Drills a smooth, shallow hole. It has a small center spur, so it can drill a nearly flat-bottomed hole.',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 18.9, y0: 22.1},
                 
                 {name: 'Countersink bit',
                 description: 'Drills a neat taper for the head of a screw.',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 89.4, y0: 75.7},
                 
                 {name: 'Brad-point bit',
                 description: 'Has a center point to help guide the drill bit to the desired position. It drills a clean hole, like those needed for fine woodworking.',
                 count: 1,
-                x0: 480, y0: 257},
+                x0: 25.6, y0: 87.6},
                 
                 {name: 'Screw pilot bit',
                 description: 'Drills the shank and pilot hole for wood screws.',
                 count: 1,
-                x0: 480, y0: 257}
+                x0: 4.7, y0: 15.6}
             ]
         }},
 
