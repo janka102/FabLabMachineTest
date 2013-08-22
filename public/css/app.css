@@ -1,10 +1,3 @@
-* {
-    -webkit-user-select: none;
-       -moz-user-select: none;
-	    -ms-user-select: none;
-	        user-select: none;
-}
-
 img[draggable="false"] {
     -webkit-user-drag: none;
             user-drag: none;
@@ -32,33 +25,50 @@ img[draggable="false"] {
 @media (max-width: 979px) {
 .navbar-fixed-top {
     margin-bottom: 0;
+    position: fixed !important;
 }
 
-div[ng-view] {
-    padding: 0 !important;
+[ng-view] {
+    padding: 50px 0 0 0 !important;
+}
+
+    /* ~85% jumbotron */
+.jumbotron {
+    height: 366px !important;
+
+}
+
+.jumbotron .fablab {
+    background-size: 340px 307px !important;
+    background-position-y: 81px !important;
+}
+
+.jumbotron:after {
+    background-size: 81px !important;
 }
 
 }
 
 /* Medium/Tablet */
 @media (max-width: 767px) {
+    /* ~75% jumbotron */
 .jumbotron {
-    padding: 40px !important;
+    height: 307px !important;
+
 }
 
-.jumbotron img {
-    height: 250px !important;
+.jumbotron .fablab {
+    background-size: 300px 271px !important;
+    background-position-y: 70px !important;
 }
 
 .jumbotron:after {
-    background-size: 71px 71px !important;
+    background-size: 75px !important;
 }
 
-#wrap > div[ng-view] {
-    margin-left: -20px;
-    margin-right: 0px;
+.navbar-fixed-top {
+    margin: 0 !important;
 }
-
 .container .marketing .row-fluid .machine {
     margin-bottom: 35px;
 }
@@ -71,6 +81,10 @@ div[ng-view] {
     opacity: 1 !important;
 }
 
+.jumbotron, footer, header {
+    margin: 0 -20px;
+}
+
 }
 
 /* Small/Phone */
@@ -79,24 +93,27 @@ body {
     padding: 0 !important;
 }
 
-.navbar {
-    padding: 0 20px !important;
-}
-
+    /* ~65% jumbotron */
 .jumbotron {
-    padding: 20px !important;
+    height: 258px !important;
+
 }
 
-.jumbotron img {
-    height: 200px !important;
+.jumbotron .fablab {
+    background-size: 260px 235px !important;
+    background-position-y: 60px !important;
 }
 
 .jumbotron:after {
-    background-size: 57px 57px !important;
+    background-size: 55px !important;
 }
 
 .marketing-byline {
     font-size: 18px !important;
+}
+
+.jumbotron, footer {
+    margin: 0 !important;
 }
 
 }
@@ -146,16 +163,15 @@ footer p {
 }
 
 /* Push down to compensate for nav */
-div[ng-view] {
-    padding: 40px 0;
+[ng-view] {
+    padding: 40px 0 0 0;
 }
 
 /* jumbotron adapted from Twitter Bootstrap jumbotron */
-.jumbotron {
-    padding: 60px;
+.jumbotron, header {
     position: relative;
+    top: 0;
     color: #fff;
-    text-align: center;
     text-shadow: 0 1px 3px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.075);
     background: #204EC5; /* Old browsers */
     background: -webkit-linear-gradient(45deg, #164299 0%, #4069D6 100%);
@@ -164,21 +180,39 @@ div[ng-view] {
     background:         linear-gradient(45deg, #164299 0%, #4069D6 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#204EC5', endColorstr='#9c9c9c',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
+
     -webkit-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.2), inset 0 -3px 7px rgba(0, 0, 0, 0.2);
        -moz-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.2), inset 0 -3px 7px rgba(0, 0, 0, 0.2);
             box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.2), inset 0 -3px 7px rgba(0, 0, 0, 0.2);
 }
 
-.jumbotron img {
-    height: 350px;
+.jumbotron {
+    height: 490px;
+    text-align: center;
+    background-attachment: fixed;
 }
 
-.jumbotron .container {
-    position: relative;
-    z-index: 2;
+header {
+    padding: 40px 0;
 }
 
-.jumbotron:after {
+header h1 {
+    font-size: 60px;
+}
+
+.jumbotron .fablab {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: url("../img/jumbotron.png");
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: 106px;
+    background-size: 400px 362px;
+    background-attachment: fixed;
+}
+
+.jumbotron:after, header:after {
     content: '';
     display: block;
     position: absolute;
@@ -218,8 +252,16 @@ div[ng-view] {
     
     /* Image replica of above - a lot of current browsers cannot do the 90deg rotation */
     background-image: url("../img/grid.png");
-    background-size: 100px 100px;
-    background-position: -2px -2px;
+    background-size: 100px;
+    background-position: -2px;
+}
+
+.jumbotron:after {
+    background-attachment: fixed;
+}
+
+header:after {
+    background-size: 75px;
 }
 
 .marketing {
@@ -317,9 +359,14 @@ div[ng-view] {
 }
 
 .container > .row-fluid {
-    margin: 20px 10px;
+    margin: 20px 0;
     padding: 10px;
-    border-radius: 6px;
+    
+    -webkit-border-radius: 6px;
+       -moz-border-radius: 6px;
+            border-radius: 6px;
+
+    width: auto;
 }
 
 .machine-title {
@@ -383,11 +430,10 @@ div[ng-view] {
 }
 
 .part-letter {
-    position: absolute;
+    float: left;
     top: 5px;
     left: 9px;
     padding-right: 5px;
-    border-right: 1px solid #AAAAAA;
 }
 
 .part.ui-state-disabled .part-letter {
@@ -395,8 +441,10 @@ div[ng-view] {
 }
 
 .part-name {
-    padding: 0 20px;
+    padding: 0 20px 0 5px;
+    margin-left: 14px;
     display: block;
+    border-left: 1px solid #AAAAAA;
 }
 
 .get-description {
