@@ -391,11 +391,10 @@ var machines = [
                 {name: 'Bevel',
                 description: '',
                 count: 1,
-                x0: 65.6, y0: 60.6},
+                x0: 65.6, y0: 60.6}
             ]
         }},
 
-        // TODO: Last!!
         {name: 'Chopsaw',
         id: 'chopsaw',
         home_page: 'front',
@@ -588,9 +587,7 @@ var machines = [
             ]
         }}
     ],
-    alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
-    //               blue-l     blue-d     bluegreen  green-l    green-d    lime       red        salmon     maroonish  yellow     orange     pink       hotpink    purple
-    borderColors = ['#ADD8E6', '#00008B', '#0D98BA', '#90EE90', '#177245', '#32CD32', '#FF0F29', '#FF8C69', '#C32148', '#FFF000', '#FF6700', '#FF93C9', '#FF4174', '#69359C'];
+    alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
 /* Controllers */
 
@@ -629,7 +626,9 @@ function NavCtrl($scope, $location) {
 
 function MachineCtrl($scope, $location, $routeParams) {
     var paramMachine = $routeParams.machine,
-        validMachine = false;
+        validMachine = false,
+        viewLengths = [],
+        borderColors = [];
 
         function array_shuffle (aArray) {
             for (var mTemp, j, i = aArray.length; i; ) {
@@ -638,6 +637,83 @@ function MachineCtrl($scope, $location, $routeParams) {
                 aArray[i] = aArray[j];
                 aArray[j] = mTemp;
             }
+        }
+
+        /* http://snipplr.com/view/14590/hsv-to-rgb */
+        function hsvToRgb(h, s, v) {
+            var r, g, b;
+            var i;
+            var f, p, q, t;
+            h = Math.max(0, Math.min(360, h));
+            s = Math.max(0, Math.min(100, s));
+            v = Math.max(0, Math.min(100, v));
+            s /= 100;
+            v /= 100;
+            if(s == 0) {
+                r = g = b = v;
+                return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+            }
+            h /= 60; // sector 0 to 5
+            i = Math.floor(h);
+            f = h - i; // factorial part of h
+            p = v * (1 - s);
+            q = v * (1 - s * f);
+            t = v * (1 - s * (1 - f));
+            switch(i) {
+                case 0:
+                    r = v; g = t; b = p; break;
+                case 1:
+                    r = q; g = v; b = p; break;
+                case 2:
+                    r = p; g = v; b = t; break;
+                case 3:
+                    r = p; g = q; b = v; break;
+                case 4:
+                    r = t; g = p; b = v; break;
+                default: // case 5:
+                    r = v; g = p; b = q;
+            }
+            return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+        }
+
+        // Generates just enough for each machines parts to be differnt
+        // Example: one machine has at most 6 parts on a view,
+        // so this will only generate 6 colors for that machine
+        function genUniqueRandomColors(amount) {
+            var h = 0,
+                s = 100,
+                v = 100,
+                amountArr = new Array(amount),
+                darken = false,
+                newColor = '';
+
+            if (amount > 7) {
+                darken = true;
+            }
+
+             for (var i = amountArr.length - 1; i >= 0; i-=1) {
+                newColor = 'rgb(' + hsvToRgb(h, s, v).join(', ') + ')';
+                //console.log(i + ': hsl(' + h + ', ' + s + ', ' + v + ') => ' + newColor);
+
+                // If amount < 7, devide the spectrum into `amount` pieces
+                if (!darken) {
+                    h += 360/amount;
+                }
+                // Else divide the spectrum into about half `amount` pieces
+                // I do this because the other half will be the original, but darker
+                else {
+                    h += 360/Math.ceil(amount/2);
+                }
+
+                // If the hue is over 360, then start over, but darker
+                if (Math.round(h) > 360) { // Math.round b/c `h` can equal 360.00000...000006 for example
+                    h = (h - 360);
+                    v = 40;
+                }
+
+                // Push the new color
+                borderColors.push(newColor);
+             }
         }
     
     for (var i = 0, len = machines.length; i < len; i++) {
@@ -652,22 +728,25 @@ function MachineCtrl($scope, $location, $routeParams) {
         $location.path('/');
         return;
     }
-    
-    // For randomizing the part order
+
     for (var view in $scope.machine.views) {
         if ($scope.machine.views.hasOwnProperty(view)) {
-            array_shuffle($scope.machine.views[view]);
+            array_shuffle($scope.machine.views[view]); // Randomizes the part order
+
+            viewLengths.push($scope.machine.views[view].length); // For genUniqueRandomColors()
         }
     }
 
     // For displaying the parts
     $scope.alphabet = alphabet;
+
+    genUniqueRandomColors(Math.max.apply(null, viewLengths));
     
     // Used for the random border colors on the .part-drop
     $scope.borderColors = borderColors;
     $scope.colors = {currentPart: null, currentIndex: null, currentViewIndex: null, colors: null};
     
-    // Returns a array of length `num`. Used in `ng-repeat` to repeat `num` times
+    // Returns an array of length `num`. Used in `ng-repeat` to repeat `num` times
     $scope.makeArray = function(num) {
         return new Array(num);
     };
