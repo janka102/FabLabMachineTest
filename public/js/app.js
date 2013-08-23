@@ -8,11 +8,6 @@ var app = angular.module('fabLab', [], function($routeProvider) {
                 controller: MainCtrl
             });
             
-        $routeProvider.when('/about',
-            {
-                templateUrl: 'partials/about.html'
-            });
-            
         $routeProvider.when('/:machine',
             {
                 templateUrl: 'partials/details.html',
