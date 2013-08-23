@@ -28,6 +28,20 @@
                         <div class="nav-collapse collapse">
                             <ul class="nav">
                                 <li ng-class="{active: routeIs(['/', ''])}"><a href="#/">Home</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        Machines
+                                        <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                                        <li ng-class="{disabled: routeIs(['/bandsaw', ''])}"><a tabindex="-1" href="#/bandsaw">Bandsaw</a></li>
+                                        <li ng-class="{disabled: routeIs(['/drillpress', ''])}"><a tabindex="-1" href="#/drillpress">Drill Press</a></li>
+                                        <li ng-class="{disabled: routeIs(['/routers', ''])}"><a tabindex="-1" href="#/routers">Routers</a></li>
+                                        <li ng-class="{disabled: routeIs(['/jointer', ''])}"><a tabindex="-1" href="#/jointer">Jointer</a></li>
+                                        <li ng-class="{disabled: routeIs(['/chopsaw', ''])}"><a tabindex="-1" href="#/chopsaw">Chopsaw</a></li>
+                                        <li ng-class="{disabled: routeIs(['/tablesaw', ''])}"><a tabindex="-1" href="#/tablesaw">Table Saw</a></li>
+                                    </ul>
+                                </li>
                             </ul>
                         </div>
                     </div>
