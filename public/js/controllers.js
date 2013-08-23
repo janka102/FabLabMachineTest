@@ -144,12 +144,12 @@ var machines = [
                 x0: 34.5, y0: 27.2}
             ],
             bits: [
-                {name: 'Spade bit',
+                {name: 'Multispur bit',
                 description: 'The long point makes it easy to locate the hole exactaly where you want.',
                 count: 1,
                 x0: 34.8, y0: 27.6},
                 
-                {name: 'Multispur bit',
+                {name: 'Spade bit',
                 description: 'Bores very clean holes at any angle. It should be used only in a drill press.',
                 count: 1,
                 x0: 23.6, y0: 63.1},
@@ -199,7 +199,7 @@ var machines = [
                 {name: 'Base Handle',
                 description: '',
                 count: 1,
-                x0: 369, y0: 65.4},
+                x0: 89.5, y0: 65.4},
                 
                 {name: 'Zero-Line',
                 description: '',
