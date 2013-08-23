@@ -401,8 +401,128 @@ var machines = [
         home_page: 'front',
         views: {
             front: [
+                {name: 'Digital Display',
+                description: '',
+                count: 1,
+                x0: 51.8, y0: 3.4},
+
+                {name: 'Handle',
+                description: '',
+                count: 1,
+                x0: 67.0, y0: 12.4},
+
+                {name: 'Motor',
+                description: '',
+                count: 1,
+                x0: 36.0, y0: 20.6},
+
+                {name: 'Upper Blade Guard',
+                description: '',
+                count: 1,
+                x0: 53.5, y0: 30.6},
+
+                {name: 'lower Blade Guard',
+                description: '',
+                count: 1,
+                x0: 65.3, y0: 45.9},
+
+                {name: 'Depth Adjustment Knob',
+                description: '',
+                count: 1,
+                x0: 34.7, y0: 36.4},
+
+                {name: 'Dust Bag',
+                description: '',
+                count: 1,
+                x0: 9.6, y0: 29.8},
+
+                {name: 'Saw Blade',
+                description: '',
+                count: 1,
+                x0: 49.6, y0: 45.4},
+
+                {name: 'Bevel Clamp Lever',
+                description: '',
+                count: 1,
+                x0: 14.0, y0: 41.7},
+
+                {name: 'Laser Marker',
+                description: '',
+                count: 1,
+                x0: 38.6, y0: 52.6},
+
+                {name: 'Bevel Scale Indicator',
+                description: '',
+                count: 1,
+                x0: 23.0, y0: 62.4},
+
+                {name: 'Left Fence',
+                description: '',
+                count: 1,
+                x0: 34.2, y0: 75.3},
+
+                {name: 'Right Fence',
+                description: '',
+                count: 1,
+                x0: 77.9, y0: 65.1},
+
+                {name: 'Vise Assembly',
+                description: '',
+                count: 1,
+                x0: 40.4, y0: 70.6},
+
+                {name: 'Table Insert',
+                description: '',
+                count: 1,
+                x0: 72.8, y0: 79.1},
+
+                {name: 'Base',
+                description: '',
+                count: 1,
+                x0: 39.8, y0: 91.2},
+
+                {name: 'Turntable',
+                description: '',
+                count: 1,
+                x0: 86.7, y0: 84.2},
+
+                {name: 'Side Handle',
+                description: '',
+                count: 1,
+                x0: 95.6, y0: 91.2},
+
+                {name: 'Release Lever',
+                description: '',
+                count: 1,
+                x0: 88.6, y0: 92.0},
+
+                {name: 'Miter Scale Indicator',
+                description: '',
+                count: 1,
+                x0: 61.9, y0: 84.2}
             ],
             rear: [
+                {name: 'Trigger Switch',
+                description: '',
+                count: 1,
+                x0: 37.4, y0: 10.0},
+
+                {name: 'Spindle Lock',
+                description: '',
+                count: 1,
+                x0: 35.5, y0: 35.6},
+
+                {name: 'Indicator',
+                description: '',
+                count: 1,
+                x0: 70.0, y0: 75.3},
+
+                {name: 'Slide Securing Knob',
+                description: '',
+                count: 2,
+                x0: 57.5, y0: 36.3,
+                x1: 67.0, y1: 38.4}
+                
             ]
         }},
 
