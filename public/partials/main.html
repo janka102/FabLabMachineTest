@@ -9,7 +9,7 @@
         <h1>The Machines.</h1>
         <p class="marketing-byline">Want to get to know them? Here they are.</p>
         <div class="row-fluid" ng-repeat="row in machineRows">
-            <a href="#/{{machine.id}}" class="span4 machine well" ng-style="{'background-image': 'url(img/'+machine.id+'/home_page.png)'}" ng-repeat="col in machineCols" ng-init="machine = machines[$parent.$index * numColumns + $index]">
+            <a href="#/{{machine.id}}" class="span4 machine well" ng-style="{'background-image': 'url(img/'+machine.id+'/'+machine.home_page+'.png)'}" ng-repeat="col in machineCols" ng-init="machine = machines[$parent.$index * numColumns + $index]">
                 <h2 class="title">{{machine.name}}</h2>
             </a>
         </div>

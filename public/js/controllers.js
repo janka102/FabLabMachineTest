@@ -4,6 +4,7 @@
 var machines = [
         {name: 'Bandsaw',
         id: 'bandsaw',
+        home_page: 'home_page',
         views: {
             front: [
                 {name: 'On/Off Switch',
@@ -69,6 +70,7 @@ var machines = [
 
         {name: 'Drill Press',
         id: 'drillpress',
+        home_page: 'front',
         views: {
             front: [
                 {name: 'Belt and Pully Housing',
@@ -186,6 +188,7 @@ var machines = [
 
         {name: 'Routers',
         id: 'routers',
+        home_page: 'inTable_front',
         views: {
             inTable_front: [
                 {name: 'Housing Index Line',
@@ -316,6 +319,7 @@ var machines = [
 
         {name: 'Jointer',
         id: 'jointer',
+        home_page: 'front',
         views: {
             front: [
                 {name: 'Fence',
@@ -394,6 +398,7 @@ var machines = [
         // TODO: Last!!
         {name: 'Chopsaw',
         id: 'chopsaw',
+        home_page: 'front',
         views: {
             front: [
             ],
@@ -403,6 +408,7 @@ var machines = [
 
         {name: 'Table Saw',
         id: 'tablesaw',
+        home_page: 'front',
         views: {
             front: [
                 {name: 'Table Insert',
