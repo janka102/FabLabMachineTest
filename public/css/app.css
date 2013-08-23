@@ -3,24 +3,6 @@ img[draggable="false"] {
             user-drag: none;
 }
 
-/* used for part of jumbotron */
-/*
-@font-face {
-    font-family: 'Alternate Gothic';
-    src: url('fonts/AlternateGothic/AlternateGothic.eot');
-    src: local('☺'), url('fonts/AlternateGothic/AlternateGothic.woff') format('woff'), url('fonts/AlternateGothic/AlternateGothic.ttf') format('truetype'), url('fonts/AlternateGothic/AlternateGothic.svg') format('svg');
-    font-weight: bold;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Ayar Kasone';
-    src: url('fonts/AyarKasone/AyarKasone.eot');
-    src: local('☺'), url('fonts/AyarKasone/AyarKasone.woff') format('woff'), url('fonts/AyarKasone/AyarKasone.ttf') format('truetype'), url('fonts/AyarKasone/AyarKasone.svg') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-*/
-
 /* Large/Desktop */
 @media (max-width: 979px) {
 .navbar-fixed-top {
