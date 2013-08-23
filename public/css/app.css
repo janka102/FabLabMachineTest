@@ -94,7 +94,7 @@ body {
     font-size: 18px !important;
 }
 
-.jumbotron, footer {
+.jumbotron, footer, header {
     margin: 0 !important;
 }
 
