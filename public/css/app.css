@@ -508,3 +508,15 @@ header:after {
     padding-top: 10px;
     margin-bottom: 0;
 }
+
+/***  Touch specific classes  ***/
+
+.ui-touch-active {
+    background-color: #555555 !important;
+    color: #DDDDDD;
+}
+
+.part-drop.ui-touch-active {
+    background-color: #DDDDDD !important;
+    color: #333333 !important;
+}
