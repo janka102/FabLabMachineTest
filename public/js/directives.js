@@ -53,12 +53,12 @@ dropOps = {
         if (!prevPart.hasClass('part-drop')) {
             // that is empty
             if (self.data('part-id') === undefined) {
-                //console.log('list to empty');
+                console.log('list to empty');
                 prevPart.data('dropped', true).draggable('disable');
             }
             // that is already occupied
             else {
-                //console.log('list to occupied');
+                console.log('list to occupied');
                 //console.log(self.clone());
                 
                 prevPart.data('dropped', true).draggable('disable');
@@ -150,7 +150,22 @@ app.directive('uiDraggable', function() {
                 return $('<div></div>').text(vars.helper.letter);
             };
             
-            elem.draggable(options);
+            elem.draggable(options).tap(function(){
+                var self = $(this),
+                    touchActive = self.siblings('.ui-touch-active')
+                        .add(self.parents('.span3').siblings('.span9').find('.ui-touch-active'));
+
+                if (!self.hasClass('ui-draggable-disabled')) {
+                    //console.log('touch-drag', self.clone());
+
+                    self.toggleClass('ui-touch-active');
+
+                    if (touchActive.length) {
+                        touchActive.removeClass('ui-touch-active');
+                    }
+                }
+            });
+
             //console.log('drAGGable:', options);
         }
     };
@@ -163,7 +178,38 @@ app.directive('uiDraggable', function() {
                 
                 options.scope = vars.scope;
                 
-            elem.droppable(options);
+            elem.droppable(options).tap(function(){
+                var self = $(this),
+                    listTouchActive = self.parents('.span9').siblings('.span3').find('.ui-touch-active'),
+                    dropTouchActive = self.parent().siblings().find('.ui-touch-active'),
+                    touchActive = listTouchActive.add(dropTouchActive);
+
+                    console.log(listTouchActive, dropTouchActive, self);
+
+               if (touchActive.length) {
+                    console.log('touch-drop', touchActive.clone());
+
+                    // Makes touchActive more like the actual ui-draggable I am passing it in as
+                    touchActive.context = touchActive[0];
+                    delete touchActive.prevObject;
+                    delete touchActive.selector;
+
+                    options.drop.call(self, event, {draggable: touchActive.eq(0)});
+
+                    touchActive.removeClass('ui-touch-active');
+               }
+
+               else if (!listTouchActive.length && !self.hasClass('ui-draggable-disabled') && self.hasClass('ui-state-highlight')) {
+                   console.log('touch-rearrange', self.clone());
+
+                   self.add(self.siblings()).toggleClass('ui-touch-active');
+
+                   if (touchActive.length) {
+                       touchActive.removeClass('ui-touch-active');
+                   }
+               }
+            });
+
             //console.log('drOPPable:', options);
         }
     };
@@ -181,7 +227,25 @@ app.directive('uiDraggable', function() {
                 return $('<div></div>').text(elem.data('part-id') ? elem.data('part-id').replace(VIEW_NAME_REGEX, '') : '');
             };
             
-            elem.draggable(options);
+            elem.draggable(options).tap(function(){
+                console.log('touch-rearrange-function');
+
+                var self = $(this),
+                    listTouchActive = self.parents('.span9').siblings('.span3').find('.ui-touch-active'),
+                    dropTouchActive = self.parent().find('.ui-touch-active');
+
+                if (!listTouchActive && !self.hasClass('ui-draggable-disabled') && self.hasClass('ui-state-highlight')) {
+                    console.log('touch-rearrange', self.clone());
+
+                    //event.stopPropagation();
+
+                    self.add(self.siblings()).toggleClass('ui-touch-active');
+
+                    if (touchActive.length) {
+                        touchActive.removeClass('ui-touch-active');
+                    }
+                }
+            });
             //console.log('rearrange:', options);
         }
     };
