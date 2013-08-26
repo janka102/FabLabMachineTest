@@ -599,6 +599,10 @@ function MainCtrl($scope) {
     $scope.machineRows.length = Math.ceil($scope.machines.length / $scope.numColumns);
     $scope.machineCols = [];
     $scope.machineCols.length = $scope.numColumns;
+
+    jQuery('[ng-view]').on('click', '.marketing-byline > span', function(){
+        window.open('https://www.youtube.com/watch?v=uhIpXPvq_n4','_blank');
+    });
 }
 
 function NavCtrl($scope, $location) {
