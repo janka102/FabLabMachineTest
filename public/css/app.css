@@ -14,43 +14,52 @@ img[draggable="false"] {
     padding: 50px 0 0 0 !important;
 }
 
-    /* ~85% jumbotron */
+/* ~85% jumbotron */
 .jumbotron {
     height: 366px !important;
-
 }
 
 .jumbotron .fablab {
-    background-size: 340px 307px !important;
+    -webkit-background-size: 340px 307px !important;
+       -moz-background-size: 340px 307px !important;
+            background-size: 340px 307px !important;
+
     background-position-y: 81px !important;
 }
 
 .jumbotron:after {
-    background-size: 81px !important;
+    -webkit-background-size: 81px !important;
+       -moz-background-size: 81px !important;
+            background-size: 81px !important;
 }
 
 }
 
 /* Medium/Tablet */
 @media (max-width: 767px) {
-    /* ~75% jumbotron */
+/* ~75% jumbotron */
 .jumbotron {
     height: 307px !important;
-
 }
 
 .jumbotron .fablab {
-    background-size: 300px 271px !important;
+    -webkit-background-size: 300px 271px !important;
+       -moz-background-size: 300px 271px !important;
+            background-size: 300px 271px !important;
+
     background-position-y: 70px !important;
 }
 
 .jumbotron:after {
-    background-size: 75px !important;
+    -webkit-background-size: 75px !important;
+       -moz-background-size: 75px !important;
+            background-size: 75px !important;
 }
 
 .navbar-fixed-top {
     margin: 0 !important;
 }
+
 .container .marketing .row-fluid .machine {
     margin-bottom: 35px;
 }
@@ -60,6 +69,9 @@ img[draggable="false"] {
 }
 
 .machine > h2 {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+        filter: alpha(opacity=100);
+
     opacity: 1 !important;
 }
 
@@ -75,19 +87,23 @@ body {
     padding: 0 !important;
 }
 
-    /* ~65% jumbotron */
+/* ~65% jumbotron */
 .jumbotron {
     height: 258px !important;
-
 }
 
 .jumbotron .fablab {
-    background-size: 260px 235px !important;
+    -webkit-background-size: 260px 235px !important;
+       -moz-background-size: 260px 235px !important;
+            background-size: 260px 235px !important;
+
     background-position-y: 60px !important;
 }
 
 .jumbotron:after {
-    background-size: 55px !important;
+    -webkit-background-size: 55px !important;
+       -moz-background-size: 55px !important;
+            background-size: 55px !important;
 }
 
 .marketing-byline {
@@ -114,15 +130,12 @@ html, body {
 
 #wrap:after {
     content: '';
-    display: block;
-
-    /* must be >= footer */
+    display: block; /* must be >= footer */
     height: 150px;
 }
 
 footer {
     height: 60px;
-
     text-align: center;
     padding: 15px 0;
     border-top: 1px solid #C0C0C0;
@@ -135,7 +148,6 @@ footer p {
 }
 
 /* Main */
-
 #wrap > div[ng-controller='MainCtrl'] {
     padding-top: 41px;
 }
@@ -160,11 +172,10 @@ footer p {
     background:    -moz-linear-gradient(45deg, #164299 0%, #4069D6 100%);
     background:      -o-linear-gradient(45deg, #164299 0%, #4069D6 100%);
     background:         linear-gradient(45deg, #164299 0%, #4069D6 100%);
+
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#204EC5', endColorstr='#9c9c9c',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
-
     -webkit-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.2), inset 0 -3px 7px rgba(0, 0, 0, 0.2);
-       -moz-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.2), inset 0 -3px 7px rgba(0, 0, 0, 0.2);
             box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.2), inset 0 -3px 7px rgba(0, 0, 0, 0.2);
 }
 
@@ -190,7 +201,11 @@ header h1 {
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: 106px;
-    background-size: 400px 362px;
+
+    -webkit-background-size: 400px 362px;
+       -moz-background-size: 400px 362px;
+            background-size: 400px 362px;
+
     background-attachment: fixed;
 }
 
@@ -234,7 +249,11 @@ header h1 {
     
     /* Image replica of above - a lot of current browsers cannot do the 90deg rotation */
     background-image: url("../img/grid.png");
-    background-size: 100px;
+
+    -webkit-background-size: 100px;
+       -moz-background-size: 100px;
+            background-size: 100px;
+
     background-position: -2px;
 }
 
@@ -243,7 +262,9 @@ header h1 {
 }
 
 header:after {
-    background-size: 75px;
+    -webkit-background-size: 75px;
+       -moz-background-size: 75px;
+            background-size: 75px;
 }
 
 .marketing {
@@ -289,18 +310,22 @@ header:after {
 .machine > h2 {
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
-    
+
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+        filter: alpha(opacity=0);
     opacity: 0;
+
     -webkit-transition: opacity .25s ease-out;
        -moz-transition: opacity .25s ease-out;
          -o-transition: opacity .25s ease-out;
+        -ms-transition: opacity .25s ease-out;
             transition: opacity .25s ease-out;
-    
+
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 0, 0, 0.075);
 
     -webkit-box-shadow: 0 0 3px #999;
-       -moz-box-shadow: 0 0 3px #999;
             box-shadow: 0 0 3px #999;
+
     background-color: #ffffff;
     background-color: rgba(255, 255, 255, 0.86);
     position: absolute;
@@ -310,10 +335,14 @@ header:after {
 }
 
 .machine:hover > h2 {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+        filter: alpha(opacity=100);
     opacity: 1;
 }
 
 .machine:active > h2 {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+        filter: alpha(opacity=100);
     opacity: 1;
 }
 
@@ -343,11 +372,7 @@ header:after {
 .container > .row-fluid {
     margin: 20px 0;
     padding: 10px;
-    
-    -webkit-border-radius: 6px;
-       -moz-border-radius: 6px;
-            border-radius: 6px;
-
+    border-radius: 6px;
     width: auto;
 }
 
@@ -359,20 +384,15 @@ header:after {
     list-style: none;
     margin: 0;
     background-color: #FFF;
-    
-    -webkit-border-radius: 6px;
-       -moz-border-radius: 6px;
-            border-radius: 6px;
+    border-radius: 6px;
 }
 
 .part {
     position: relative;
-    
     cursor: move;
     cursor: -webkit-grab;
     cursor:    -moz-grab;
     cursor:         grab;
-    
     background-color: #FFFFFF;
     padding: 5px 9px;
     margin: 0 0 -1px;
@@ -380,31 +400,27 @@ header:after {
 }
 
 .part:first-of-type {
-    -webkit-border-radius: 6px 6px 0 0;
-       -moz-border-radius: 6px 6px 0 0;
-            border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
 }
 
 .part:last-of-type {
-    -webkit-border-radius: 0 0 6px 6px;
-       -moz-border-radius: 0 0 6px 6px;
-            border-radius: 0 0 6px 6px;
+    border-radius: 0 0 6px 6px;
 }
 
 .part.ui-state-disabled {
     color: #EEEEEE;
     background-color: #999999;
-    
+
     background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, rgba(0, 0, 0, 0)), color-stop(0.5, rgba(0, 0, 0, 0)), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0)));
     background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0));
     background-image:    -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0));
     background-image:      -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0));
+    background-image:     -ms-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0));
     background-image:         linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0));
-    
-    -webkit-background-size: 40px 40px;
-       -moz-background-size: 40px 40px;
-         -o-background-size: 40px 40px;
-            background-size: 40px 40px;
+
+    -image -webkit-background-size: 40px 40px;
+    -moz-background-size: 40px 40px;
+    background-size: 40px 40px;
 }
 
 .part:not(.ui-state-disabled):hover {
@@ -419,7 +435,7 @@ header:after {
 }
 
 .part.ui-state-disabled .part-letter {
-    border-color: #DDDDDD
+    border-color: #DDDDDD;
 }
 
 .part-name {
@@ -437,7 +453,6 @@ header:after {
     cursor: pointer;
 }
 
-
 .part-description {
     display: block;
     color: #333;
@@ -448,7 +463,9 @@ header:after {
     background-color: #F9F9F9;
     border-left: 5px solid #0088CC;
     border-radius: 4px;
-    box-shadow: 0 0 5px #555555 inset;
+
+    -webkit-box-shadow: 0 0 5px #555555 inset;
+            box-shadow: 0 0 5px #555555 inset;
 }
 
 .ui-draggable-dragging {
@@ -459,7 +476,6 @@ header:after {
     text-align: center;
     border-radius: 20px;
     border: 2px solid #0088CC;
-    
     cursor: move;
     cursor: -webkit-grabbing;
     cursor:    -moz-grabbing;
@@ -481,7 +497,6 @@ header:after {
 
 .part-drop.ui-state-highlight {
     background-color: rgba(0, 0, 0, 0.75);
-    
     cursor: move;
     cursor: -webkit-grab;
     cursor:    -moz-grab;
@@ -495,6 +510,7 @@ header:after {
 .part-drop.ui-draggable-disabled {
     background-color: rgba(0, 0, 0, 0);
 }
+
 .part-drop.ui-state-hover, .part-drop.ui-draggable-disabled {
     color: rgba(0, 0, 0, 0);
 }
@@ -510,7 +526,6 @@ header:after {
 }
 
 /***  Touch specific classes  ***/
-
 .ui-touch-active {
     background-color: #555555 !important;
     color: #DDDDDD;
