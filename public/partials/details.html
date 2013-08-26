@@ -4,7 +4,7 @@
   </div>
 </header>
 <div class="container details">
-    <div class="row-fluid well" ng-repeat="(viewName, view) in machine.views">
+    <div class="row-fluid well" ng-repeat="(viewName, view) in machine.views" ng-init="genUniqueRandomColors(view.length, viewName)">
         <div class="span3">
             <ol class="parts-list">
                 <li class="part" ng-repeat="part in view" ui-draggable="{scope: viewName, helper: {letter: alphabet[$index]}}" ng-init="partId = viewName + alphabet[$index];" add-part-id add-part-description>
@@ -17,7 +17,7 @@
         <div class="span9 machine-view">
             <div class="drop-wrapper">
                 <div class="part-group" ng-repeat="part in view" ng-init="partId = viewName + alphabet[$index];" add-part-id>
-                    <div class="part-drop" ng-repeat="i in makeArray(part.count)" ui-droppable="{accept: viewname, scope: viewName}" ui-rearrange="{scope: viewName}" style-part="{part: part, count: $index, viewIndex: $parent.$parent.$index}"></div>
+                    <div class="part-drop" ng-repeat="i in makeArray(part.count)" ui-droppable="{accept: viewname, scope: viewName}" ui-rearrange="{scope: viewName}" style-part="{part: part, count: $index, viewIndex: $parent.$parent.$index, name: viewName}"></div>
                 </div>
                 
                 <img ng-src="img/{{machine.id}}/{{viewName}}.png" draggable="false" unselectable="on" ondragstart="function(){return false;}">

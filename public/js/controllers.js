@@ -627,8 +627,7 @@ function NavCtrl($scope, $location) {
 function MachineCtrl($scope, $location, $routeParams) {
     var paramMachine = $routeParams.machine,
         validMachine = false,
-        viewLengths = [],
-        borderColors = [];
+        viewLengths = [];
 
         function array_shuffle (aArray) {
             for (var mTemp, j, i = aArray.length; i; ) {
@@ -679,14 +678,16 @@ function MachineCtrl($scope, $location, $routeParams) {
         // Generates just enough for each machines parts to be differnt
         // Example: one machine has at most 6 parts on a view,
         // so this will only generate 6 colors for that machine
-        function genUniqueRandomColors(amount) {
+        $scope.genUniqueRandomColors = function(amount, name) {
             amount = amount >= 5 ? amount : 5; // Mimimum of 5 colors
+
             var h = 0,
                 s = 100,
                 v = 100,
                 amountArr = new Array(amount),
                 darken = false,
-                newColor = '';
+                newColor = '',
+                tmpColors = [];
 
             if (amount > 7) {
                 darken = true;
@@ -713,8 +714,12 @@ function MachineCtrl($scope, $location, $routeParams) {
                 }
 
                 // Push the new color
-                borderColors.push(newColor);
+                tmpColors.push(newColor);
              }
+
+             // Used for the random border colors on the .part-drop
+             $scope[name + 'Colors'] = {currentPart: null, currentIndex: null, currentViewIndex: null, colors: null};
+             $scope[name + 'BorderColors'] = tmpColors;
         }
     
     for (var i = 0, len = machines.length; i < len; i++) {
@@ -740,12 +745,6 @@ function MachineCtrl($scope, $location, $routeParams) {
 
     // For displaying the parts
     $scope.alphabet = alphabet;
-
-    genUniqueRandomColors(Math.max.apply(null, viewLengths));
-    
-    // Used for the random border colors on the .part-drop
-    $scope.borderColors = borderColors;
-    $scope.colors = {currentPart: null, currentIndex: null, currentViewIndex: null, colors: null};
     
     // Returns an array of length `num`. Used in `ng-repeat` to repeat `num` times
     $scope.makeArray = function(num) {

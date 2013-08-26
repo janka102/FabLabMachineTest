@@ -280,17 +280,17 @@ app.directive('uiDraggable', function() {
                 part = vars.part,
                 count = vars.count,
                 viewIndex = vars.viewIndex,
-                borderColors = scope.borderColors,
+                name = vars.name,
+                borderColors = scope[name + 'BorderColors'],
                 
                 style = {left: part['x' + count] + '%', top: part['y' + count] + '%'},
-                colors = scope.colors,
-                currentColor,
+                colors = scope[name + 'Colors'],
                 randColor = function() {
                     if (colors.currentviewIndex !== viewIndex) {
                         // console.log('currentviewIndex:', colors.currentviewIndex, 'viewIndex:', viewIndex);
 
                         // reset
-                        scope.colors.currentIndex = null;
+                        scope[name + 'Colors'].currentIndex = null;
 
                         colors.currentviewIndex = viewIndex;
                         colors.colors = borderColors.slice(0);
@@ -308,14 +308,16 @@ app.directive('uiDraggable', function() {
                         colors.currentIndex = Math.floor(Math.random() * colors.colors.length);
                     }
                     
-                    currentColor = colors.colors[colors.currentIndex];
+                    var currentColor = colors.colors[colors.currentIndex];
                     
-                    scope.colors = colors;
+                    scope[name + 'Colors'] = colors;
                     
                     // console.log(colors.colors, colors.currentIndex, currentColor);
                     
                     return currentColor;
                 };
+            
+            console.log('stylePart:', name + 'BorderColors');
             
             style['border-color'] = randColor();
             
