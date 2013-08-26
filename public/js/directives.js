@@ -316,9 +316,7 @@ app.directive('uiDraggable', function() {
                     
                     return currentColor;
                 };
-            
-            console.log('stylePart:', name + 'BorderColors');
-            
+
             style['border-color'] = randColor();
             
             elem.css(style);
