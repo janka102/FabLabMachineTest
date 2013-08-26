@@ -680,6 +680,7 @@ function MachineCtrl($scope, $location, $routeParams) {
         // Example: one machine has at most 6 parts on a view,
         // so this will only generate 6 colors for that machine
         function genUniqueRandomColors(amount) {
+            amount = amount >= 5 ? amount : 5; // Mimimum of 5 colors
             var h = 0,
                 s = 100,
                 v = 100,
