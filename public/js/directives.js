@@ -53,12 +53,12 @@ dropOps = {
         if (!prevPart.hasClass('part-drop')) {
             // that is empty
             if (self.data('part-id') === undefined) {
-                console.log('list to empty');
+                //console.log('list to empty');
                 prevPart.data('dropped', true).draggable('disable');
             }
             // that is already occupied
             else {
-                console.log('list to occupied');
+                //console.log('list to occupied');
                 //console.log(self.clone());
                 
                 prevPart.data('dropped', true).draggable('disable');
@@ -184,10 +184,10 @@ app.directive('uiDraggable', function() {
                     dropTouchActive = self.parent().siblings().find('.ui-touch-active'),
                     touchActive = listTouchActive.add(dropTouchActive);
 
-                    console.log(listTouchActive, dropTouchActive, self);
+                    //console.log(listTouchActive, dropTouchActive, self);
 
                if (touchActive.length) {
-                    console.log('touch-drop', touchActive.clone());
+                    //console.log('touch-drop', touchActive.clone());
 
                     // Makes touchActive more like the actual ui-draggable I am passing it in as
                     touchActive.context = touchActive[0];
@@ -200,7 +200,7 @@ app.directive('uiDraggable', function() {
                }
 
                else if (!listTouchActive.length && !self.hasClass('ui-draggable-disabled') && self.hasClass('ui-state-highlight')) {
-                   console.log('touch-rearrange', self.clone());
+                   //console.log('touch-rearrange', self.clone());
 
                    self.add(self.siblings()).toggleClass('ui-touch-active');
 
@@ -228,14 +228,14 @@ app.directive('uiDraggable', function() {
             };
             
             elem.draggable(options).tap(function(){
-                console.log('touch-rearrange-function');
+                //console.log('touch-rearrange-function');
 
                 var self = $(this),
                     listTouchActive = self.parents('.span9').siblings('.span3').find('.ui-touch-active'),
                     dropTouchActive = self.parent().find('.ui-touch-active');
 
                 if (!listTouchActive && !self.hasClass('ui-draggable-disabled') && self.hasClass('ui-state-highlight')) {
-                    console.log('touch-rearrange', self.clone());
+                    //console.log('touch-rearrange', self.clone());
 
                     //event.stopPropagation();
 
