@@ -603,6 +603,24 @@ function MainCtrl($scope) {
     jQuery('[ng-view]').on('click', '.marketing-byline > span', function(){
         window.open('https://www.youtube.com/watch?v=uhIpXPvq_n4','_blank');
     });
+
+    // Pre load the instruction GIFs - hopefully will cut down load time for slow connections
+    function preload(arrayOfImages) {
+        $(arrayOfImages).each(function(){
+            $('<img/>')[0].src = this;
+        });
+    }
+    preload(['img/instructions/drag.gif', 'img/instructions/replace.gif', 'img/instructions/rearrange.gif']);
+
+    jQuery('.instructGif').on('click', function(){
+        var self = $(this),
+        oldSrc = self.find('img').attr('src'),
+        ext = /[_.].+/i,
+        newSrc = oldSrc.replace(ext, self.hasClass('static') ? '.gif' : '_static.png');
+
+        self.toggleClass('static');
+        self.find('img').attr('src', newSrc );
+    });
 }
 
 function NavCtrl($scope, $location) {
