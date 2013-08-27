@@ -22,14 +22,16 @@ var app = angular.module('fabLab', [], function($routeProvider) {
 
 function checkSubmit(){
     var machineViews = $('.machine-view'),
-
         numCorrect = 0,
         partsLength = 0,
         incompleteViews = 0,
+        scoreObj,
+        message1 = '<span class="text-error"><strong>Uh-oh!</strong> %msg%</span>',
+        message2 = '<span class="text-error">%msg%</span>',
         score = function(percent) {
             var bad = [':(', '(O.O)', 'ಠ╭╮ಠ', 'ರ_ರ', 'you should probably try again'],
                 medium = ['maybe next time you\'ll get it'],
-                good = [':)', '(^∇^)', '◕‿◕', 'very good!'],
+                good = [':)', '(^∇^)', '(^_^)', '◕‿◕', 'very good!'],
                 cssClass = '',
                 scoreMessage = '',
                 getRand = function(array) {
@@ -64,10 +66,7 @@ function checkSubmit(){
             viewPartsLength = parts.length,
             filledviewPartsLength = parts.has('.ui-state-highlight').length,
             viewNumCorrect = 0,
-            percent = 0,
-            message1 = '<span class="text-error"><strong>Uh-oh!</strong> %msg%</span>',
-            message2 = '<span class="text-error">%msg%</span>',
-            scoreObj;
+            percent = 0;
 
         if (filledviewPartsLength === 0) {
             incompleteViews += 1;
@@ -96,23 +95,23 @@ function checkSubmit(){
 
         // console.log(this, percent, scoreMessage);
 
-        if (machineViews.length > 1) {
-            self.siblings().find('.score').html(message2.replace(/text-[a-z]+/, scoreObj.klass).replace('%msg%', 'You got ' + viewNumCorrect + ' out of ' + viewPartsLength + ' correct, that\'s ' + percent.toFixed(2) + '%... ' + scoreObj.message));
-        }
-    
-        if (index === machineViews.length - 1 && incompleteViews === 0) {
-            scoreObj = score(numCorrect / partsLength * 100);
-            $('#check-parts').find('.score').html(message2.replace(/text-[a-z]+/, scoreObj.klass).replace('%msg%', '<strong>Total:</strong> You got ' + numCorrect + ' out of ' + partsLength + ' correct, that\'s ' + ((numCorrect / partsLength) * 100).toFixed(2) + '%... ' + scoreObj.message));
-        }
+        self.siblings().find('.score').html(message2.replace(/text-[a-z]+/, scoreObj.klass).replace('%msg%', 'You got ' + viewNumCorrect + ' out of ' + viewPartsLength + ' correct, that\'s ' + percent.toFixed(2) + '%... ' + scoreObj.message));        
     });
+
+    if (incompleteViews === 0) {
+        scoreObj = score(numCorrect / partsLength * 100);
+        $('#check-parts').find('.score').html(message2.replace(/text-[a-z]+/, scoreObj.klass).replace('%msg%', '<strong>Total:</strong> You got ' + numCorrect + ' out of ' + partsLength + ' correct, that\'s ' + ((numCorrect / partsLength) * 100).toFixed(2) + '%... ' + scoreObj.message));
+    }
 }
 
 function resetParts() {
     var partsList = $('.parts-list'),
         partDrops = $('.part-drop');
         
-    // Clear out any scores/alerts
+    // Clears out old scores and flashes "Reset..."
     $('.score').html('');
+    $('#check-parts').find('.score').html('Reset...');
+    setTimeout(function() {$('#check-parts').find('.score').html('');}, 1250);
     
     partsList.children().each(function(){
         $(this).data('dropped', false).draggable('enable').removeClass('ui-state-disabled');
