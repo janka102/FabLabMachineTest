@@ -114,6 +114,14 @@ body {
     margin: 0 !important;
 }
 
+.instructGif {
+    margin: 0 !important;
+}
+
+#check-parts, #instructions {
+    padding: 0 15px; 
+}
+
 }
 
 /* Sticky Footer */
@@ -350,6 +358,61 @@ header:after {
     margin-bottom: 35px;
 }
 
+/******** For the Instructions ********/
+#instructions {
+    text-align: left;
+}
+
+#instructions h1 {
+    text-align: center;
+}
+
+#instructions h3, #instructions .page-header {
+    clear: both;
+}
+
+.instructGif {
+    display: inline-block;
+    position: relative;
+}
+
+#instructions img {
+    margin-left: 25px;
+}
+
+.instructGif:hover {
+    cursor: pointer;
+}
+
+.instructGif:before {
+    content: "";
+    position: absolute;
+    top: calc(50% - 46px);
+    left: calc(50% - 54px);
+    width: 45px;
+    height: 84px;
+    border: 16px solid transparent;
+    border-width: 0 26px;
+}
+
+.instructGif.static:before {
+    top: calc(50% - 30px);
+    left: calc(50% - 28px);
+    width: 0;
+    height: 0;
+    border: 32px solid transparent;
+    border-width: 32px 0 32px 58px;
+    border-left-color: #000000
+}
+
+.instructGif:hover:before {
+    border-color: #FFFFFF;
+}
+
+.instructGif.static:hover:before {
+    border-color: transparent;
+    border-left-color: #FFFFFF;
+}
 /**************************** details.html ****************************/
 .details {
     position: relative;
