@@ -24,7 +24,7 @@ img[draggable="false"] {
        -moz-background-size: 340px 307px !important;
             background-size: 340px 307px !important;
 
-    background-position-y: 81px !important;
+    background-position: center 81px !important;
 }
 
 .jumbotron:after {
@@ -47,7 +47,7 @@ img[draggable="false"] {
        -moz-background-size: 300px 271px !important;
             background-size: 300px 271px !important;
 
-    background-position-y: 70px !important;
+    background-position: center 70px !important;
 }
 
 .jumbotron:after {
@@ -97,7 +97,7 @@ body {
        -moz-background-size: 260px 235px !important;
             background-size: 260px 235px !important;
 
-    background-position-y: 60px !important;
+    background-position: center 60px !important;
 }
 
 .jumbotron:after {
@@ -207,8 +207,7 @@ header h1 {
     width: 100%;
     background-image: url("../img/jumbotron.png");
     background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: 106px;
+    background-position: center 106px;
 
     -webkit-background-size: 400px 362px;
        -moz-background-size: 400px 362px;
