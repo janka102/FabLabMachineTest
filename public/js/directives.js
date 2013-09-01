@@ -38,20 +38,20 @@ dropOps = {
         selfGroup = self.add(self.siblings()),
         prevPart = ui.draggable,
         prevGroup = prevPart.add(prevPart.siblings()),
-	letter = prevPart.data('part-id').replace(VIEW_NAME_REGEX, ''), // gets the single uppercase part letter
-	selfID = self.data('part-id'),
-	partsList = self.parents('.machine-view').siblings('.span3'),
-	score = partsList.find('.score').add($('.check-total').find('.score'));
+    letter = prevPart.data('part-id').replace(VIEW_NAME_REGEX, ''), // gets the single uppercase part letter
+    selfID = self.data('part-id'),
+    partsList = self.parents('.machine-view').siblings('.span3'),
+    score = partsList.find('.score').add($('.check-total').find('.score'));
         //console.log('drop-drop', self);
 
         if (score.length) {
             score.html('');
 
-	    self.parent().siblings().add(self.parent()).children().each(function(){
-		var self = $(this);
+            self.parent().siblings().add(self.parent()).children().each(function(){
+                var self = $(this);
 
-		self.css('border-color', self.data('border-color'));
-	    });
+                self.css('border-color', self.data('border-color'));
+            });
         }
         
         if (selfGroup.hasClass('ui-state-hover')) { selfGroup.removeClass('ui-state-hover'); }
@@ -72,7 +72,7 @@ dropOps = {
                 prevPart.siblings().each(function(){
                     var self = $(this);
                     
-		    if (self.data('part-id') === selfID) {
+                    if (self.data('part-id') === selfID) {
                         self.data('dropped', false).draggable('enable').removeClass('ui-state-disabled');
                         
                         return false;
@@ -94,28 +94,27 @@ dropOps = {
                 // that is already occupied
                 else {
                     //console.log('rearrange to occupied', prevPart.data('part-id'), '>', self.data('part-id'));
-                    
                     selfGroup.data('part-id', prevPart.data('part-id'));
-                   //console.log(self.data('part-id'));
+                    //console.log(self.data('part-id'));
                     selfGroup.text(prevPart.text());
                     
-		    // prevGroup.data('part-id', selfID);
-		    // prevGroup.text(selfID.replace(VIEW_NAME_REGEX, ''));
+                    // prevGroup.data('part-id', selfID);
+                    // prevGroup.text(selfID.replace(VIEW_NAME_REGEX, ''));
 
-		    prevGroup.removeData('part-id').text('').removeClass('ui-state-highlight');
-		    partsList.find('.part').each(function(){
-			var self = $(this);
+                    prevGroup.removeData('part-id').text('').removeClass('ui-state-highlight');
+                    partsList.find('.part').each(function(){
+                        var self = $(this);
 
-			if (self.data('part-id') === selfID) {
-			    self.data('dropped', false).draggable('enable').removeClass('ui-state-disabled');
-			}
-		    });
+                        if (self.data('part-id') === selfID) {
+                            self.data('dropped', false).draggable('enable').removeClass('ui-state-disabled');
+                        }
+                    });
                     
                     return;
                 }
             }
             // to a spot that is of the same part
-	    else {
+        else {
                 //console.log('canceled drop b/c part was the same', self.data('part-id'), prevPart.data('part-id'))
                 return false;
             }
@@ -139,7 +138,7 @@ rearrangeOps = {
         if (!self.data('part-id')) {
             //console.log('canceled rearrange b/c it has no partID');
             return false;
-	} else {
+        } else {
             self.add(self.siblings()).addClass('ui-draggable-disabled');
         }
     },
@@ -162,7 +161,7 @@ app.directive('uiDraggable', function() {
             
             //console.log(vars);
             options.scope = vars.scope;
-	    options.helper = function() {
+            options.helper = function() {
                 return $('<div></div>').text(vars.helper.letter);
             };
             
@@ -192,7 +191,7 @@ app.directive('uiDraggable', function() {
             var vars = scope.$eval(attrs.uiDroppable),
                 options = dropOps;
                 
-	    options.scope = vars.scope;
+            options.scope = vars.scope;
                 
             elem.droppable(options).tap(function(){
                 var self = $(this),
@@ -202,7 +201,7 @@ app.directive('uiDraggable', function() {
 
                     //console.log(listTouchActive, dropTouchActive, self);
 
-		if (touchActive.length) {
+                if (touchActive.length) {
                     //console.log('touch-drop', touchActive.clone());
 
                     // Makes touchActive more like the actual ui-draggable I am passing it in as
@@ -213,17 +212,17 @@ app.directive('uiDraggable', function() {
                     options.drop.call(self, event, {draggable: touchActive.eq(0)});
 
                     touchActive.removeClass('ui-touch-active');
-		}
+                }
 
-		else if (!listTouchActive.length && !self.hasClass('ui-draggable-disabled') && self.hasClass('ui-state-highlight')) {
-		    //console.log('touch-rearrange', self.clone());
+                else if (!listTouchActive.length && !self.hasClass('ui-draggable-disabled') && self.hasClass('ui-state-highlight')) {
+                    //console.log('touch-rearrange', self.clone());
 
-		    self.add(self.siblings()).toggleClass('ui-touch-active');
+                    self.add(self.siblings()).toggleClass('ui-touch-active');
 
-		    if (touchActive.length) {
-			touchActive.removeClass('ui-touch-active');
-		    }
-		}
+                    if (touchActive.length) {
+                        touchActive.removeClass('ui-touch-active');
+                    }
+                }
             });
 
             //console.log('drOPPable:', options);
@@ -239,18 +238,18 @@ app.directive('uiDraggable', function() {
             //console.log(vars);
             options.scope = vars.scope;
             
-	    options.helper = function() {
+            options.helper = function() {
                 return $('<div></div>').text(elem.data('part-id') ? elem.data('part-id').replace(VIEW_NAME_REGEX, '') : '');
             };
             
-	    elem.draggable(options);
+            elem.draggable(options);
             //console.log('rearrange:', options);
         }
     };
 }).directive('addPartId', function() {
     return {
         restrict: 'A',
-	link: function(scope, elem) {
+        link: function(scope, elem) {
             elem.data('part-id', scope.partId);
             //console.log(elem.data('part-id'));
         }
@@ -258,11 +257,11 @@ app.directive('uiDraggable', function() {
 }).directive('addPartDescription', function(){
     return {
         restrict: 'A',
-	link: function(scope, elem) {
+        link: function(scope, elem) {
             var icon, description;
 
             if (scope.part.description) {
-		icon = $('<i class="icon-question-sign get-description ui-icon" title="Hint" data-toggle="tooltip"></i>').click(function(){scope.toggle(event);});
+                icon = $('<i class="icon-question-sign get-description ui-icon" title="Hint" data-toggle="tooltip"></i>').click(function(){scope.toggle(event);});
                 description = $('<span class="part-description ui-helper-hidden-accessible">' + scope.part.description + '</span>');
                 
                 elem.append(icon).append(description);
@@ -274,8 +273,8 @@ app.directive('uiDraggable', function() {
     return {
         restrict: 'A',
         link: function(scope, elem, attrs) {
-	    var DEFAULT_COLOR = 'rgb(0, 136, 204)',
-		vars = scope.$eval(attrs.stylePart),
+            var DEFAULT_COLOR = 'rgb(0, 136, 204)',
+                vars = scope.$eval(attrs.stylePart),
                 part = vars.part,
                 count = vars.count,
                 viewIndex = vars.viewIndex,
@@ -316,9 +315,9 @@ app.directive('uiDraggable', function() {
                     return currentColor;
                 };
 
-	    style['border-color'] = borderColors.length ? randColor() : DEFAULT_COLOR;
+            style['border-color'] = borderColors.length ? randColor() : DEFAULT_COLOR;
             
-	    elem.css(style).data('border-color', style['border-color']);
+            elem.css(style).data('border-color', style['border-color']);
         }
     };
 });

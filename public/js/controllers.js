@@ -4,7 +4,7 @@
 var machines = [
         {name: 'Bandsaw',
         id: 'bandsaw',
-	homePage: 'homePage',
+    homePage: 'homePage',
         views: {
             front: [
                 {name: 'On/Off Switch',
@@ -70,7 +70,7 @@ var machines = [
 
         {name: 'Drill Press',
         id: 'drillpress',
-	homePage: 'front',
+    homePage: 'front',
         views: {
             front: [
                 {name: 'Belt and Pully Housing',
@@ -188,9 +188,9 @@ var machines = [
 
         {name: 'Routers',
         id: 'routers',
-	homePage: 'inTableFront',
+    homePage: 'inTableFront',
         views: {
-	    inTableFront: [
+            inTableFront: [
                 {name: 'Housing Index Line',
                 description: '',
                 count: 1,
@@ -221,7 +221,7 @@ var machines = [
                 count: 1,
                 x0: 24.4, y0: 49.2}
             ],
-	    inTableTop: [
+            inTableTop: [
                 {name: 'On/Off Switch',
                 description: '',
                 count: 1,
@@ -232,7 +232,7 @@ var machines = [
                 count: 1,
                 x0: 1.8, y0: 45.0}
             ],
-	    handheldFront: [
+            handheldFront: [
                 {name: 'Collet Nut',
                 description: '',
                 count: 1,
@@ -253,7 +253,7 @@ var machines = [
                 count: 1,
                 x0: 23.1, y0: 58.9}
             ],
-	    handheldSide: [
+            handheldSide: [
                 {name: 'Sub-Base',
                 description: '',
                 count: 1,
@@ -278,48 +278,48 @@ var machines = [
                 {name: 'Core Box',
                 description: '',
                 count: 1,
-		x0: 43.3, y0: 44.6},
+                x0: 43.3, y0: 44.6},
                 
                 {name: 'Cove',
                 description: '',
                 count: 1,
-		x0: 34.8, y0: 78.1},
+                x0: 34.8, y0: 78.1},
                 
                 {name: 'Rabbeting',
                 description: '',
                 count: 1,
-		x0: 56.7, y0: 12.1},
+                x0: 56.7, y0: 12.1},
                 
                 {name: 'Chamfer 45° Bevel',
                 description: '',
                 count: 1,
-		x0: 19.3, y0: 45.8},
+                x0: 19.3, y0: 45.8},
                 
                 {name: 'Straight One Piece',
                 description: '',
                 count: 1,
-		x0: 14.2, y0: 6.5},
+                x0: 14.2, y0: 6.5},
                 
                 {name: 'V Grooveing',
                 description: '',
                 count: 1,
-		x0: 66.4, y0: 75.7},
+                x0: 66.4, y0: 75.7},
                 
                 {name: 'Dovetail',
                 description: '',
                 count: 1,
-		x0: 79.6, y0: 45.1},
+                x0: 79.6, y0: 45.1},
                 
                 {name: 'Corner Rounding',
                 description: '',
                 count: 1,
-		x0: 91.1, y0: 13.1}
+                x0: 91.1, y0: 13.1}
             ]
         }},
 
         {name: 'Jointer',
         id: 'jointer',
-	homePage: 'front',
+    homePage: 'front',
         views: {
             front: [
                 {name: 'Fence',
@@ -397,7 +397,7 @@ var machines = [
 
         {name: 'Chopsaw',
         id: 'chopsaw',
-	homePage: 'front',
+    homePage: 'front',
         views: {
             front: [
                 {name: 'Digital Display',
@@ -527,7 +527,7 @@ var machines = [
 
         {name: 'Table Saw',
         id: 'tablesaw',
-	homePage: 'front',
+    homePage: 'front',
         views: {
             front: [
                 {name: 'Table Insert',
@@ -615,8 +615,8 @@ function MainCtrl($scope) {
     jQuery('.instructGif').on('click', function(){
         var self = $(this),
         oldSrc = self.find('img').attr('src'),
-	ext = /\.[a-z]{3}/i,
-	newSrc = oldSrc.replace(ext, self.hasClass('static') ? '.gif' : '.png');
+    ext = /\.[a-z]{3}/i,
+    newSrc = oldSrc.replace(ext, self.hasClass('static') ? '.gif' : '.png');
 
         self.toggleClass('static');
         self.find('img').attr('src', newSrc );
@@ -630,7 +630,7 @@ function NavCtrl($scope, $location) {
         // If the routes were given as an array...
         if (routeNames instanceof Array) {
             // Loop through each
-	    for (var i = routeNames.length - 1; i >= 0; i-=1) {
+            for (var i = routeNames.length - 1; i >= 0; i-=1) {
                 // If the current route is equal to one given, return true
                 if (loc === routeNames[i]) {
                     return true;
@@ -652,110 +652,110 @@ function MachineCtrl($scope, $location, $routeParams) {
         viewLengths = [];
 
     function arrayShuffle (aArray) {
-	for (var mTemp, j, i = aArray.length; i; ) {
-	    j = parseInt(Math.random() * i, 10);
-	    mTemp = aArray[--i];
-	    aArray[i] = aArray[j];
-	    aArray[j] = mTemp;
+        for (var mTemp, j, i = aArray.length; i; ) {
+            j = parseInt(Math.random() * i, 10);
+            mTemp = aArray[--i];
+            aArray[i] = aArray[j];
+            aArray[j] = mTemp;
         }
     }
 
     /* http://snipplr.com/view/14590/hsv-to-rgb */
     function hsvToRgb(h, s, v) {
-	var r, g, b;
-	var i;
-	var f, p, q, t;
-	h = Math.max(0, Math.min(360, h));
-	s = Math.max(0, Math.min(100, s));
-	v = Math.max(0, Math.min(100, v));
-	s /= 100;
-	v /= 100;
-	if(s === 0) {
-	    r = g = b = v;
+        var r, g, b;
+        var i;
+        var f, p, q, t;
+        h = Math.max(0, Math.min(360, h));
+        s = Math.max(0, Math.min(100, s));
+        v = Math.max(0, Math.min(100, v));
+        s /= 100;
+        v /= 100;
+        if(s === 0) {
+            r = g = b = v;
             return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
         }
-	h /= 60; // sector 0 to 5
-	i = Math.floor(h);
-	f = h - i; // factorial part of h
-	p = v * (1 - s);
-	q = v * (1 - s * f);
-	t = v * (1 - s * (1 - f));
-	switch(i) {
-	case 0:
-	    r = v; g = t; b = p; break;
-	case 1:
-	    r = q; g = v; b = p; break;
-	case 2:
-	    r = p; g = v; b = t; break;
-	case 3:
-	    r = p; g = q; b = v; break;
-	case 4:
-	    r = t; g = p; b = v; break;
-	default: // case 5:
-	    r = v; g = p; b = q;
-	}
-	return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+        h /= 60; // sector 0 to 5
+        i = Math.floor(h);
+        f = h - i; // factorial part of h
+        p = v * (1 - s);
+        q = v * (1 - s * f);
+        t = v * (1 - s * (1 - f));
+        switch(i) {
+        case 0:
+            r = v; g = t; b = p; break;
+        case 1:
+            r = q; g = v; b = p; break;
+        case 2:
+            r = p; g = v; b = t; break;
+        case 3:
+            r = p; g = q; b = v; break;
+        case 4:
+            r = t; g = p; b = v; break;
+        default: // case 5:
+            r = v; g = p; b = q;
+        }
+        return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
     }
 
     // Generates `view.length` colors if that view has a part with a count > 1
     $scope.genUniqueRandomColors = function(view, name) {
-	$scope[name + 'Colors'] = {currentPart: null, currentIndex: null, currentViewIndex: null, colors: null};
+        $scope[name + 'Colors'] = {currentPart: null, currentIndex: null, currentViewIndex: null, colors: null};
 
-	for (var i = view.length - 1; i >= 0; i-=1) {
-	    if (view[i].count > 1) {
-		break;
-	    }
+        for (var i = view.length - 1; i >= 0; i-=1) {
+            if (view[i].count > 1) {
+                break;
+            }
 
-	    // If on the last item and and the above if statement has not triggered
-	    // everyone has a count of 1, so just use the default color for all them
-	    if (i === 0) {
-		$scope[name + 'BorderColors'] = [];
-		return;
-	    }
-	}
+            // If on the last item and and the above if statement has not triggered
+            // everyone has a count of 1, so just use the default color for all them
+            if (i === 0) {
+                $scope[name + 'BorderColors'] = [];
+                return;
+            }
+        }
 
-	var amount = view.length >= 4 ? view.length : 4, // Mimimum of 4 colors
-	    h = 0,
-	    s = 100,
-	    v = 100,
-	    amountArr = new Array(amount),
-	    darken = false,
-	    newColor = '',
-	    tmpColors = [];
+        var amount = view.length >= 4 ? view.length : 4, // Mimimum of 4 colors
+            h = 0,
+            s = 100,
+            v = 100,
+            amountArr = new Array(amount),
+            darken = false,
+            newColor = '',
+            tmpColors = [];
 
-	if (amount > 7) {
-	    darken = true;
-	}
+        if (amount > 7) {
+            darken = true;
+        }
 
-	for (var j = amountArr.length - 1; j >= 0; j-=1) {
-	    newColor = 'rgb(' + hsvToRgb(h, s, v).join(', ') + ')';
-	    //console.log(i + ': hsl(' + h + ', ' + s + ', ' + v + ') => ' + newColor);
+        for (var j = amountArr.length - 1; j >= 0; j-=1) {
+            newColor = 'rgb(' + hsvToRgb(h, s, v).join(', ') + ')';
+            //console.log(i + ': hsl(' + h + ', ' + s + ', ' + v + ') => ' + newColor);
 
-	    // If amount < 7, divide the spectrum into `amount` pieces
-	    if (!darken) {
-		h += 360/amount;
-	    }
-	    // Else divide the spectrum into about half `amount` pieces
-	    // I do this because the other half will be the original, but darker
-	    else {
-		h += 360/Math.ceil(amount/2);
-	    }
+            // If amount < 7, divide the spectrum into `amount` pieces
+            if (!darken) {
+                h += 360/amount;
+            }
+            // Else divide the spectrum into about half `amount` pieces
+            // I do this because the other half will be the original, but darker
+            else {
+                h += 360/Math.ceil(amount/2);
+            }
 
-	    // If the hue is over 360, then start over, but darker
-	    if (Math.round(h) > 360) { // Math.round b/c `h` can equal 360.00000...000006 for example
-		h = (h - 360);
-		v = 40;
-	    }
+            // If the hue is over 360, then start over, but darker
+            if (Math.round(h) > 360) { // Math.round b/c `h` can equal 360.00000...000006 for example
+                h = (h - 360);
+                v = 40;
+            }
 
-	    // Push the new color
-	    tmpColors.push(newColor);
-	}
+            // Push the new color
+            tmpColors.push(newColor);
+        }
 
-	$scope[name + 'BorderColors'] = tmpColors;
+        $scope[name + 'BorderColors'] = tmpColors;
     };
 
     for (var i = machines.length - 1; i >= 0; i-=1) {
-	if (machines[i].id === paramMachine) {
+        if (machines[i].id === paramMachine) {
             validMachine = true;
             $scope.machine = machines[i];
             break;
@@ -769,7 +769,7 @@ function MachineCtrl($scope, $location, $routeParams) {
 
     for (var view in $scope.machine.views) {
         if ($scope.machine.views.hasOwnProperty(view)) {
-	    arrayShuffle($scope.machine.views[view]); // Randomizes the part order
+            arrayShuffle($scope.machine.views[view]); // Randomizes the part order
 
             viewLengths.push($scope.machine.views[view].length); // For genUniqueRandomColors()
         }
@@ -785,7 +785,7 @@ function MachineCtrl($scope, $location, $routeParams) {
     
     // Toggles the description of each part
     $scope.toggle = function($event){
-	$($event.target).next().toggleClass('ui-helper-hidden-accessible');
+        $($event.target).next().toggleClass('ui-helper-hidden-accessible');
         //console.log('toggled', part);
     };
 }
