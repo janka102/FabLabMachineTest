@@ -13,6 +13,11 @@
                 </li>
             </ol>
             <p class="score"></p>
+	    <div class="check-parts">
+		<button type="button" class="btn" onclick="resetParts(this);">Reset</button>
+		<button type="button" class="btn btn-primary" onclick="checkParts(this);">Submit</button>
+		<p class="score"></p>
+	    </div>
         </div>
         <div class="span9 machine-view">
             <div class="drop-wrapper">
@@ -24,9 +29,11 @@
             </div>
         </div>
     </div>
-    <div id="check-parts">
+    <!--
+    <div class="check-total">
         <button type="button" class="btn" onclick="resetParts();">Reset</button>
-        <button type="button" class="btn btn-primary" onclick="checkSubmit();">Submit</button>
-        <p class="score"><p>
+	<button type="button" class="btn btn-primary" onclick="checkParts();">Submit</button>
+	<p class="score"></p>
     </div>
+    -->
 </div>

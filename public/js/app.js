@@ -20,7 +20,7 @@ var app = angular.module('fabLab', [], function($routeProvider) {
             });
     });
 
-function checkSubmit(){
+function checkParts(view) {
     var machineViews = $('.machine-view'),
         numCorrect = 0,
         partsLength = 0,
@@ -60,7 +60,13 @@ function checkSubmit(){
             return {'klass': cssClass, 'message': scoreMessage};
         };
 
-    machineViews.each(function(index){
+    if (view !== undefined && view instanceof HTMLElement) {
+	view = $(view);
+
+	machineViews = view.parents('.span3').siblings('.machine-view');
+    }
+
+    machineViews.each(function() {
         var self = $(this),
             parts = self.find('.part-group'),
             viewPartsLength = parts.length,
@@ -104,16 +110,27 @@ function checkSubmit(){
     }
 }
 
-function resetParts() {
+function resetParts(view) {
     var partsList = $('.parts-list'),
-        partDrops = $('.part-drop');
-        
+	partDrops = $('.part-drop'),
+	score = $('.score'),
+	scoreTotal = $('.check-total').find('.score');
+
+    if (view !== undefined && view instanceof HTMLElement) {
+	view = $(view);
+
+	partsList = view.parents('.span3').find('.parts-list');
+	partDrops = view.parents('.span3').siblings('.machine-view').find('.part-drop');
+
+	score = scoreTotal = view.siblings('.score');
+    }
+
     // Clears out old scores and flashes "Reset..."
-    $('.score').html('');
-    $('#check-parts').find('.score').html('Reset...');
-    setTimeout(function() {$('#check-parts').find('.score').html('');}, 1250);
-    
-    partsList.children().each(function(){
+    score.html('');
+    scoreTotal.html('Reset...');
+    setTimeout(function(){scoreTotal.html('');}, 1250);
+
+    partsList.children().each(function() {
         $(this).data('dropped', false).draggable('enable').removeClass('ui-state-disabled');
     });
     
