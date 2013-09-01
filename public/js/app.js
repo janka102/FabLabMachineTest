@@ -86,6 +86,10 @@ function checkParts(view) {
 
             if (self.data('part-id') === self.children().data('part-id')) {
                 viewNumCorrect += 1;
+
+		self.children().css('border-color', 'rgb(98, 196, 98)');
+	    } else {
+		self.children().css('border-color', 'rgb(238, 95, 91)');
             }
         });
 
@@ -129,9 +133,10 @@ function resetParts(view) {
     partsList.children().each(function() {
         $(this).data('dropped', false).draggable('enable').removeClass('ui-state-disabled');
     });
-    
-    partDrops.each(function(){
-        $(this).removeData('part-id').text('').removeClass('ui-state-highlight');
+
+    partDrops.each(function() {
+	var self = $(this);
+	self.removeData('part-id').text('').removeClass('ui-state-highlight').css('border-color', self.data('border-color'));
     });
 
     //console.log('machine reset!');

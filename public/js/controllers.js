@@ -697,56 +697,64 @@ function MachineCtrl($scope, $location, $routeParams) {
 	return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
     }
 
+    // Generates `view.length` colors if that view has a part with a count > 1
+    $scope.genUniqueRandomColors = function(view, name) {
+	$scope[name + 'Colors'] = {currentPart: null, currentIndex: null, currentViewIndex: null, colors: null};
 
-        // Generates just enough for each machines parts to be differnt
-        // Example: one machine has at most 6 parts on a view,
-        // so this will only generate 6 colors for that machine
-        $scope.genUniqueRandomColors = function(amount, name) {
-            amount = amount >= 5 ? amount : 5; // Mimimum of 5 colors
+	for (var i = view.length - 1; i >= 0; i-=1) {
+	    if (view[i].count > 1) {
+		break;
+	    }
 
-            var h = 0,
-                s = 100,
-                v = 100,
-                amountArr = new Array(amount),
-                darken = false,
-                newColor = '',
-                tmpColors = [];
+	    // If on the last item and and the above if statement has not triggered
+	    // everyone has a count of 1, so just use the default color for all them
+	    if (i === 0) {
+		$scope[name + 'BorderColors'] = [];
+		return;
+	    }
+	}
 
-            if (amount > 7) {
-                darken = true;
-            }
+	var amount = view.length >= 4 ? view.length : 4, // Mimimum of 4 colors
+	    h = 0,
+	    s = 100,
+	    v = 100,
+	    amountArr = new Array(amount),
+	    darken = false,
+	    newColor = '',
+	    tmpColors = [];
 
-             for (var i = amountArr.length - 1; i >= 0; i-=1) {
-                newColor = 'rgb(' + hsvToRgb(h, s, v).join(', ') + ')';
-                //console.log(i + ': hsl(' + h + ', ' + s + ', ' + v + ') => ' + newColor);
+	if (amount > 7) {
+	    darken = true;
+	}
 
-                // If amount < 7, devide the spectrum into `amount` pieces
-                if (!darken) {
-                    h += 360/amount;
-                }
-                // Else divide the spectrum into about half `amount` pieces
-                // I do this because the other half will be the original, but darker
-                else {
-                    h += 360/Math.ceil(amount/2);
-                }
+	for (var j = amountArr.length - 1; j >= 0; j-=1) {
+	    newColor = 'rgb(' + hsvToRgb(h, s, v).join(', ') + ')';
+	    //console.log(i + ': hsl(' + h + ', ' + s + ', ' + v + ') => ' + newColor);
 
-                // If the hue is over 360, then start over, but darker
-                if (Math.round(h) > 360) { // Math.round b/c `h` can equal 360.00000...000006 for example
-                    h = (h - 360);
-                    v = 40;
-                }
+	    // If amount < 7, divide the spectrum into `amount` pieces
+	    if (!darken) {
+		h += 360/amount;
+	    }
+	    // Else divide the spectrum into about half `amount` pieces
+	    // I do this because the other half will be the original, but darker
+	    else {
+		h += 360/Math.ceil(amount/2);
 
-                // Push the new color
-                tmpColors.push(newColor);
-             }
+	    // If the hue is over 360, then start over, but darker
+	    if (Math.round(h) > 360) { // Math.round b/c `h` can equal 360.00000...000006 for example
+		h = (h - 360);
+		v = 40;
+	    }
 
-             // Used for the random border colors on the .part-drop
-             $scope[name + 'Colors'] = {currentPart: null, currentIndex: null, currentViewIndex: null, colors: null};
-             $scope[name + 'BorderColors'] = tmpColors;
-        }
-    
+	    // Push the new color
+	    tmpColors.push(newColor);
+	}
+
+	$scope[name + 'BorderColors'] = tmpColors;
+    };
+
     for (var i = machines.length - 1; i >= 0; i-=1) {
-        if (machines[i].id === paramMachine) {
+	if (machines[i].id === paramMachine) {
             validMachine = true;
             $scope.machine = machines[i];
             break;
