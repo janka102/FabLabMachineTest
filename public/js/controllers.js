@@ -4,7 +4,7 @@
 var machines = [
         {name: 'Bandsaw',
         id: 'bandsaw',
-        home_page: 'home_page',
+	homePage: 'homePage',
         views: {
             front: [
                 {name: 'On/Off Switch',
@@ -70,7 +70,7 @@ var machines = [
 
         {name: 'Drill Press',
         id: 'drillpress',
-        home_page: 'front',
+	homePage: 'front',
         views: {
             front: [
                 {name: 'Belt and Pully Housing',
@@ -188,9 +188,9 @@ var machines = [
 
         {name: 'Routers',
         id: 'routers',
-        home_page: 'inTable_front',
+	homePage: 'inTableFront',
         views: {
-            inTable_front: [
+	    inTableFront: [
                 {name: 'Housing Index Line',
                 description: '',
                 count: 1,
@@ -221,7 +221,7 @@ var machines = [
                 count: 1,
                 x0: 24.4, y0: 49.2}
             ],
-            inTable_top: [
+	    inTableTop: [
                 {name: 'On/Off Switch',
                 description: '',
                 count: 1,
@@ -232,7 +232,7 @@ var machines = [
                 count: 1,
                 x0: 1.8, y0: 45.0}
             ],
-            handheld_front: [
+	    handheldFront: [
                 {name: 'Collet Nut',
                 description: '',
                 count: 1,
@@ -253,7 +253,7 @@ var machines = [
                 count: 1,
                 x0: 23.1, y0: 58.9}
             ],
-            handheld_side: [
+	    handheldSide: [
                 {name: 'Sub-Base',
                 description: '',
                 count: 1,
@@ -319,7 +319,7 @@ var machines = [
 
         {name: 'Jointer',
         id: 'jointer',
-        home_page: 'front',
+	homePage: 'front',
         views: {
             front: [
                 {name: 'Fence',
@@ -397,7 +397,7 @@ var machines = [
 
         {name: 'Chopsaw',
         id: 'chopsaw',
-        home_page: 'front',
+	homePage: 'front',
         views: {
             front: [
                 {name: 'Digital Display',
@@ -527,7 +527,7 @@ var machines = [
 
         {name: 'Table Saw',
         id: 'tablesaw',
-        home_page: 'front',
+	homePage: 'front',
         views: {
             front: [
                 {name: 'Table Insert',
@@ -651,13 +651,13 @@ function MachineCtrl($scope, $location, $routeParams) {
         validMachine = false,
         viewLengths = [];
 
-        function array_shuffle (aArray) {
             for (var mTemp, j, i = aArray.length; i; ) {
                 j = parseInt(Math.random() * i);
                 mTemp = aArray[--i];
                 aArray[i] = aArray[j];
                 aArray[j] = mTemp;
             }
+    function arrayShuffle (aArray) {
         }
 
         /* http://snipplr.com/view/14590/hsv-to-rgb */
@@ -759,7 +759,7 @@ function MachineCtrl($scope, $location, $routeParams) {
 
     for (var view in $scope.machine.views) {
         if ($scope.machine.views.hasOwnProperty(view)) {
-            array_shuffle($scope.machine.views[view]); // Randomizes the part order
+	    arrayShuffle($scope.machine.views[view]); // Randomizes the part order
 
             viewLengths.push($scope.machine.views[view].length); // For genUniqueRandomColors()
         }
