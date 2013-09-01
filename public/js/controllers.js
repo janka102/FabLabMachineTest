@@ -615,8 +615,8 @@ function MainCtrl($scope) {
     jQuery('.instructGif').on('click', function(){
         var self = $(this),
         oldSrc = self.find('img').attr('src'),
-        ext = /[_.].+/i,
-        newSrc = oldSrc.replace(ext, self.hasClass('static') ? '.gif' : '_static.png');
+	ext = /\.[a-z]{3}/i,
+	newSrc = oldSrc.replace(ext, self.hasClass('static') ? '.gif' : '.png');
 
         self.toggleClass('static');
         self.find('img').attr('src', newSrc );

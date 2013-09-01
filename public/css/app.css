@@ -386,26 +386,28 @@ header:after {
 .instructGif:before {
     content: "";
     position: absolute;
-    top: calc(50% - 46px);
-    left: calc(50% - 54px);
-    width: 45px;
-    height: 84px;
+    bottom: 16px;
+    right: 16px;
+    width: 29px;
+    height: 54px;
     border: 16px solid transparent;
-    border-width: 0 26px;
+    border-width: 0 16px;
 }
 
 .instructGif.static:before {
-    top: calc(50% - 30px);
-    left: calc(50% - 28px);
+    top: -webkit-calc(50% - 50px);
+    top:         calc(50% - 50px);
+    left: -webkit-calc(50% - 38px);
+    left:         calc(50% - 38px);
     width: 0;
     height: 0;
-    border: 32px solid transparent;
-    border-width: 32px 0 32px 58px;
-    border-left-color: #000000
+    border: 52px solid transparent;
+    border-width: 52px 0 52px 98px;
+    border-left-color: #76FF76;
 }
 
 .instructGif:hover:before {
-    border-color: #FFFFFF;
+    border-color: #FF7676;
 }
 
 .instructGif.static:hover:before {
