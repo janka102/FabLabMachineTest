@@ -6,12 +6,12 @@ dragOps = {
     cursorAt: { left: 17, top: 17 },
     revert: 'invalid',
     zIndex: 900,
-    start: function(event, ui) {
+    start: function() {
         var self = $(this);
         //console.log('drag-start', self);
         self.addClass('ui-state-disabled');
     },
-    stop: function(event, ui) {
+    stop: function() {
         var self = $(this);
         //console.log('drag-stop', self);
         if (!self.data('dropped')) {
@@ -23,12 +23,12 @@ dragOps = {
 dropOps = {
     addClasses: false,
     tolerance: 'intersect',
-    over: function(event, ui) {
+    over: function() {
         var self = $(this);
         //console.log('drop-over', self);
         self.add(self.siblings()).addClass('ui-state-hover');
     },
-    out: function(event, ui) {
+    out: function() {
         var self = $(this);
         //console.log('drop-out', self);
         self.add(self.siblings()).removeClass('ui-state-hover');
@@ -116,18 +116,18 @@ rearrangeOps = {
     cursorAt: { left: 17, top: 17 },
     revert: 'invalid',
     zIndex: 900,
-    start: function(event, ui) {
+    start: function() {
         var self = $(this);
         //console.log('rearrange-start', self);
         
         if (!self.data('part-id')) {
             //console.log('canceled rearrange b/c it has no partID');
             return false;
-        } else { 
+	} else {
             self.add(self.siblings()).addClass('ui-draggable-disabled');
         }
     },
-    stop: function(event, ui) {
+    stop: function() {
         var self = $(this);
         //console.log('rearrange-stop', self);
         
@@ -146,7 +146,7 @@ app.directive('uiDraggable', function() {
             
             //console.log(vars);
             options.scope = vars.scope;
-            options.helper = function(event) {
+	    options.helper = function() {
                 return $('<div></div>').text(vars.helper.letter);
             };
             
@@ -176,7 +176,7 @@ app.directive('uiDraggable', function() {
             var vars = scope.$eval(attrs.uiDroppable),
                 options = dropOps;
                 
-                options.scope = vars.scope;
+	    options.scope = vars.scope;
                 
             elem.droppable(options).tap(function(){
                 var self = $(this),
@@ -186,7 +186,7 @@ app.directive('uiDraggable', function() {
 
                     //console.log(listTouchActive, dropTouchActive, self);
 
-               if (touchActive.length) {
+		if (touchActive.length) {
                     //console.log('touch-drop', touchActive.clone());
 
                     // Makes touchActive more like the actual ui-draggable I am passing it in as
@@ -197,17 +197,17 @@ app.directive('uiDraggable', function() {
                     options.drop.call(self, event, {draggable: touchActive.eq(0)});
 
                     touchActive.removeClass('ui-touch-active');
-               }
+		}
 
-               else if (!listTouchActive.length && !self.hasClass('ui-draggable-disabled') && self.hasClass('ui-state-highlight')) {
-                   //console.log('touch-rearrange', self.clone());
+		else if (!listTouchActive.length && !self.hasClass('ui-draggable-disabled') && self.hasClass('ui-state-highlight')) {
+		    //console.log('touch-rearrange', self.clone());
 
-                   self.add(self.siblings()).toggleClass('ui-touch-active');
+		    self.add(self.siblings()).toggleClass('ui-touch-active');
 
-                   if (touchActive.length) {
-                       touchActive.removeClass('ui-touch-active');
-                   }
-               }
+		    if (touchActive.length) {
+			touchActive.removeClass('ui-touch-active');
+		    }
+		}
             });
 
             //console.log('drOPPable:', options);
@@ -223,7 +223,7 @@ app.directive('uiDraggable', function() {
             //console.log(vars);
             options.scope = vars.scope;
             
-            options.helper = function(event) {
+	    options.helper = function() {
                 return $('<div></div>').text(elem.data('part-id') ? elem.data('part-id').replace(VIEW_NAME_REGEX, '') : '');
             };
             
@@ -252,7 +252,7 @@ app.directive('uiDraggable', function() {
 }).directive('addPartId', function() {
     return {
         restrict: 'A',
-        link: function(scope, elem, attrs) {
+	link: function(scope, elem) {
             elem.data('part-id', scope.partId);
             //console.log(elem.data('part-id'));
         }
@@ -260,11 +260,11 @@ app.directive('uiDraggable', function() {
 }).directive('addPartDescription', function(){
     return {
         restrict: 'A',
-        link: function(scope, elem, attrs) {
+	link: function(scope, elem) {
             var icon, description;
 
             if (scope.part.description) {
-                icon = $('<i class="icon-question-sign get-description ui-icon" title="Hint" data-toggle="tooltip"></i>').click(function(){scope.toggle(event)});
+		icon = $('<i class="icon-question-sign get-description ui-icon" title="Hint" data-toggle="tooltip"></i>').click(function(){scope.toggle(event);});
                 description = $('<span class="part-description ui-helper-hidden-accessible">' + scope.part.description + '</span>');
                 
                 elem.append(icon).append(description);

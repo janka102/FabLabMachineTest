@@ -630,7 +630,7 @@ function NavCtrl($scope, $location) {
         // If the routes were given as an array...
         if (routeNames instanceof Array) {
             // Loop through each
-            for (var i = 0, len = routeNames.length; i < len; i++) {
+	    for (var i = routeNames.length - 1; i >= 0; i-=1) {
                 // If the current route is equal to one given, return true
                 if (loc === routeNames[i]) {
                     return true;
@@ -651,51 +651,52 @@ function MachineCtrl($scope, $location, $routeParams) {
         validMachine = false,
         viewLengths = [];
 
-            for (var mTemp, j, i = aArray.length; i; ) {
-                j = parseInt(Math.random() * i);
-                mTemp = aArray[--i];
-                aArray[i] = aArray[j];
-                aArray[j] = mTemp;
-            }
     function arrayShuffle (aArray) {
+	for (var mTemp, j, i = aArray.length; i; ) {
+	    j = parseInt(Math.random() * i, 10);
+	    mTemp = aArray[--i];
+	    aArray[i] = aArray[j];
+	    aArray[j] = mTemp;
         }
+    }
 
-        /* http://snipplr.com/view/14590/hsv-to-rgb */
-        function hsvToRgb(h, s, v) {
-            var r, g, b;
-            var i;
-            var f, p, q, t;
-            h = Math.max(0, Math.min(360, h));
-            s = Math.max(0, Math.min(100, s));
-            v = Math.max(0, Math.min(100, v));
-            s /= 100;
-            v /= 100;
-            if(s == 0) {
-                r = g = b = v;
-                return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
-            }
-            h /= 60; // sector 0 to 5
-            i = Math.floor(h);
-            f = h - i; // factorial part of h
-            p = v * (1 - s);
-            q = v * (1 - s * f);
-            t = v * (1 - s * (1 - f));
-            switch(i) {
-                case 0:
-                    r = v; g = t; b = p; break;
-                case 1:
-                    r = q; g = v; b = p; break;
-                case 2:
-                    r = p; g = v; b = t; break;
-                case 3:
-                    r = p; g = q; b = v; break;
-                case 4:
-                    r = t; g = p; b = v; break;
-                default: // case 5:
-                    r = v; g = p; b = q;
-            }
+    /* http://snipplr.com/view/14590/hsv-to-rgb */
+    function hsvToRgb(h, s, v) {
+	var r, g, b;
+	var i;
+	var f, p, q, t;
+	h = Math.max(0, Math.min(360, h));
+	s = Math.max(0, Math.min(100, s));
+	v = Math.max(0, Math.min(100, v));
+	s /= 100;
+	v /= 100;
+	if(s === 0) {
+	    r = g = b = v;
             return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
         }
+	h /= 60; // sector 0 to 5
+	i = Math.floor(h);
+	f = h - i; // factorial part of h
+	p = v * (1 - s);
+	q = v * (1 - s * f);
+	t = v * (1 - s * (1 - f));
+	switch(i) {
+	case 0:
+	    r = v; g = t; b = p; break;
+	case 1:
+	    r = q; g = v; b = p; break;
+	case 2:
+	    r = p; g = v; b = t; break;
+	case 3:
+	    r = p; g = q; b = v; break;
+	case 4:
+	    r = t; g = p; b = v; break;
+	default: // case 5:
+	    r = v; g = p; b = q;
+	}
+	return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+    }
+
 
         // Generates just enough for each machines parts to be differnt
         // Example: one machine has at most 6 parts on a view,
@@ -744,7 +745,7 @@ function MachineCtrl($scope, $location, $routeParams) {
              $scope[name + 'BorderColors'] = tmpColors;
         }
     
-    for (var i = 0, len = machines.length; i < len; i++) {
+    for (var i = machines.length - 1; i >= 0; i-=1) {
         if (machines[i].id === paramMachine) {
             validMachine = true;
             $scope.machine = machines[i];
@@ -775,7 +776,7 @@ function MachineCtrl($scope, $location, $routeParams) {
     
     // Toggles the description of each part
     $scope.toggle = function($event){
-       $($event.target).next().toggleClass('ui-helper-hidden-accessible');
+	$($event.target).next().toggleClass('ui-helper-hidden-accessible');
         //console.log('toggled', part);
     };
 }
