@@ -278,42 +278,42 @@ var machines = [
                 {name: 'Core Box',
                 description: '',
                 count: 1,
-                x0: 43.3, y0: 56.6},
+		x0: 43.3, y0: 44.6},
                 
                 {name: 'Cove',
                 description: '',
                 count: 1,
-                x0: 28.4, y0: 90.1},
+		x0: 34.8, y0: 78.1},
                 
                 {name: 'Rabbeting',
                 description: '',
                 count: 1,
-                x0: 49.1, y0: 23.7},
+		x0: 56.7, y0: 12.1},
                 
                 {name: 'Chamfer 45° Bevel',
                 description: '',
                 count: 1,
-                x0: 14.0, y0: 56.8},
+		x0: 19.3, y0: 45.8},
                 
                 {name: 'Straight One Piece',
                 description: '',
                 count: 1,
-                x0: 14.4, y0: 24.5},
+		x0: 14.2, y0: 6.5},
                 
                 {name: 'V Grooveing',
                 description: '',
                 count: 1,
-                x0: 66.4, y0: 89.7},
+		x0: 66.4, y0: 75.7},
                 
                 {name: 'Dovetail',
                 description: '',
                 count: 1,
-                x0: 79.6, y0: 57.6},
+		x0: 79.6, y0: 45.1},
                 
                 {name: 'Corner Rounding',
                 description: '',
                 count: 1,
-                x0: 85.8, y0: 23.1}
+		x0: 91.1, y0: 13.1}
             ]
         }},
 
@@ -739,6 +739,7 @@ function MachineCtrl($scope, $location, $routeParams) {
 	    // I do this because the other half will be the original, but darker
 	    else {
 		h += 360/Math.ceil(amount/2);
+	    }
 
 	    // If the hue is over 360, then start over, but darker
 	    if (Math.round(h) > 360) { // Math.round b/c `h` can equal 360.00000...000006 for example
