@@ -420,7 +420,7 @@ var machines = [
                 count: 1,
                 x0: 53.5, y0: 30.6},
 
-                {name: 'lower Blade Guard',
+                {name: 'Lower Blade Guard',
                 description: '',
                 count: 1,
                 x0: 65.3, y0: 45.9},
