@@ -67,7 +67,7 @@ function checkParts(view) {
         var self = $(this),
             parts = self.find('.part-group'),
             viewPartsLength = parts.length,
-        filledViewPartsLength = parts.has('.ui-state-highlight').length,
+            filledViewPartsLength = parts.has('.ui-state-highlight').length,
             viewNumCorrect = 0,
             percent = 0;
 
@@ -77,6 +77,11 @@ function checkParts(view) {
             return;
         } else if (filledViewPartsLength < viewPartsLength) {
             incompleteViews += 1;
+
+            parts.children(':not(".ui-state-highlight")').each(function(){
+                $(this).css('border-color', 'rgb(238, 95, 91)');
+            });
+
             self.siblings().find('.score').html(message1.replace('%msg%', 'You forgot ' + (viewPartsLength - filledViewPartsLength) + ' part' + ((viewPartsLength - filledViewPartsLength) !== 1 ? 's' : '') + '!'));
             return;
         }
