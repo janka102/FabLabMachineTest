@@ -1,5 +1,3 @@
-'use strict';
-
 // Each machine with each view and locations of parts (in percent). Location taken from top-left.
 var machines = [
         {name: 'Bandsaw',
@@ -591,7 +589,7 @@ var machines = [
 
 /* Controllers */
 
-function MainCtrl($scope) {
+var MainCtrl = ['$scope', function($scope) {
     $scope.machines = machines;
 
     $scope.numColumns = 3;
@@ -621,9 +619,9 @@ function MainCtrl($scope) {
         self.toggleClass('static');
         self.find('img').attr('src', newSrc );
     });
-}
+}];
 
-function NavCtrl($scope, $location) {
+var NavCtrl = ['$scope', '$location', function($scope, $location) {
     $scope.routeIs = function(routeNames) {
         var loc = $location.path();
 
@@ -644,9 +642,9 @@ function NavCtrl($scope, $location) {
         // If the current route is equal to the one given, return true, otherwise return false.
         return loc === routeNames;
     };
-}
+}];
 
-function MachineCtrl($scope, $location, $routeParams) {
+var MachineCtrl = ['$scope', '$location', '$routeParams', function($scope, $location, $routeParams) {
     var paramMachine = $routeParams.machine,
         validMachine = false,
         viewLengths = [];
@@ -788,4 +786,4 @@ function MachineCtrl($scope, $location, $routeParams) {
         $($event.target).next().toggleClass('ui-helper-hidden-accessible');
         //console.log('toggled', part);
     };
-}
+}];

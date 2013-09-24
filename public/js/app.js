@@ -1,7 +1,5 @@
-'use strict';
-
 // Declare app level module with routes
-var app = angular.module('fabLab', [], function($routeProvider) {
+var app = angular.module('fabLab', [], ['$routeProvider', function($routeProvider) {
     $routeProvider.when('/', {
         templateUrl: 'partials/main.html',
         controller: MainCtrl
@@ -15,7 +13,7 @@ var app = angular.module('fabLab', [], function($routeProvider) {
     $routeProvider.otherwise({
         redirectTo: '/'
     });
-});
+}]);
 
 function checkParts(view) {
     var machineViews = $('.machine-view'),
