@@ -1,19 +1,21 @@
 // Declare app level module with routes
-var app = angular.module('fabLab', [], ['$routeProvider', function($routeProvider) {
-    $routeProvider.when('/', {
-        templateUrl: 'partials/main.html',
-        controller: MainCtrl
-    });
+var app = angular.module('fabLab', [], ['$routeProvider',
+    function($routeProvider) {
+        $routeProvider.when('/', {
+            templateUrl: 'partials/main.html',
+            controller: MainCtrl
+        });
 
-    $routeProvider.when('/:machine', {
-        templateUrl: 'partials/details.html',
-        controller: MachineCtrl
-    });
+        $routeProvider.when('/:machine', {
+            templateUrl: 'partials/details.html',
+            controller: MachineCtrl
+        });
 
-    $routeProvider.otherwise({
-        redirectTo: '/'
-    });
-}]);
+        $routeProvider.otherwise({
+            redirectTo: '/'
+        });
+    }
+]);
 
 function checkParts(view) {
     var machineViews = $('.machine-view'),
@@ -34,25 +36,28 @@ function checkParts(view) {
                 };
 
             switch (true) {
-            // [0, 70] is red
-            case (percent >= 0 && percent <= 70):
-                cssClass = 'text-error';
-                scoreMessage = getRand(bad);
-                break;
+                // [0, 70] is red
+                case (percent >= 0 && percent <= 70):
+                    cssClass = 'text-error';
+                    scoreMessage = getRand(bad);
+                    break;
 
-            // (70, 90) is yellow
-            case (percent > 70 && percent < 90):
-                cssClass = 'text-warning';
-                scoreMessage = getRand(medium);
-                break;
+                    // (70, 90) is yellow
+                case (percent > 70 && percent < 90):
+                    cssClass = 'text-warning';
+                    scoreMessage = getRand(medium);
+                    break;
 
-            // [90, 100] is green
-            default:
-                cssClass = 'text-success';
-                scoreMessage = getRand(good);
+                    // [90, 100] is green
+                default:
+                    cssClass = 'text-success';
+                    scoreMessage = getRand(good);
             }
 
-            return {'klass': cssClass, 'message': scoreMessage};
+            return {
+                'klass': cssClass,
+                'message': scoreMessage
+            };
         };
 
     if (view !== undefined && view instanceof HTMLElement) {
@@ -76,7 +81,7 @@ function checkParts(view) {
         } else if (filledViewPartsLength < viewPartsLength) {
             incompleteViews += 1;
 
-            parts.children(':not(".ui-state-highlight")').each(function(){
+            parts.children(':not(".ui-state-highlight")').each(function() {
                 $(this).css('border-color', 'rgb(238, 95, 91)');
             });
 
@@ -115,9 +120,9 @@ function checkParts(view) {
 
 function resetParts(view) {
     var partsList = $('.parts-list'),
-    partDrops = $('.part-drop'),
-    score = $('.score'),
-    scoreTotal = $('.check-total').find('.score');
+        partDrops = $('.part-drop'),
+        score = $('.score'),
+        scoreTotal = $('.check-total').find('.score');
 
     if (view !== undefined && view instanceof HTMLElement) {
         view = $(view);
@@ -131,7 +136,9 @@ function resetParts(view) {
     // Clears out old scores and flashes "Reset..."
     score.html('');
     scoreTotal.html('Reset...');
-    setTimeout(function(){scoreTotal.html('');}, 1250);
+    setTimeout(function() {
+        scoreTotal.html('');
+    }, 1250);
 
     partsList.children().each(function() {
         $(this).data('dropped', false).draggable('enable').removeClass('ui-state-disabled');

@@ -1,7 +1,7 @@
 <header>
-  <div class="container">
-    <h1>{{machine.name}}</h1>
-  </div>
+    <div class="container">
+        <h1>{{machine.name}}</h1>
+    </div>
 </header>
 <div class="container details">
     <div class="row-fluid well" ng-repeat="(viewName, view) in machine.views" ng-init="genUniqueRandomColors(view, viewName)">
@@ -9,21 +9,21 @@
             <ol class="parts-list">
                 <li class="part" ng-repeat="part in view" ui-draggable="{scope: viewName, helper: {letter: alphabet[$index]}}" ng-init="partId = viewName + alphabet[$index];" add-part-id add-part-description>
                     <span class="part-letter">{{alphabet[$index]}}</span>
-		    <span class="part-name">{{part.name}}</span>
-		</li>
-	    </ol>
-	    <div class="check-parts">
-		<button type="button" class="btn" onclick="resetParts(this);">Reset</button>
-		<button type="button" class="btn btn-primary" onclick="checkParts(this);">Submit</button>
-		<p class="score"></p>
-	    </div>
+                    <span class="part-name">{{part.name}}</span>
+                </li>
+            </ol>
+            <div class="check-parts">
+                <button type="button" class="btn" onclick="resetParts(this);">Reset</button>
+                <button type="button" class="btn btn-primary" onclick="checkParts(this);">Submit</button>
+                <p class="score"></p>
+            </div>
         </div>
         <div class="span9 machine-view">
             <div class="drop-wrapper">
                 <div class="part-group" ng-repeat="part in view" ng-init="partId = viewName + alphabet[$index];" add-part-id>
                     <div class="part-drop" ng-repeat="i in makeArray(part.count)" ui-droppable="{accept: viewname, scope: viewName}" ui-rearrange="{scope: viewName}" style-part="{part: part, count: $index, viewIndex: $parent.$parent.$index, name: viewName}"></div>
                 </div>
-                
+
                 <img ng-src="img/{{machine.id}}/{{viewName}}.png" draggable="false" unselectable="on" ondragstart="function(){return false;}">
             </div>
         </div>
@@ -31,8 +31,8 @@
     <!--
     <div class="check-total">
         <button type="button" class="btn" onclick="resetParts();">Reset</button>
-	<button type="button" class="btn btn-primary" onclick="checkParts();">Submit</button>
-	<p class="score"></p>
+    <button type="button" class="btn btn-primary" onclick="checkParts();">Submit</button>
+    <p class="score"></p>
     </div>
     -->
 </div>

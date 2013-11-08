@@ -1,7 +1,10 @@
 var VIEW_NAME_REGEX = new RegExp(/[a-zA-Z_]+[a-z]/g),
     dragOps = {
         addClass: false,
-        cursorAt: { left: 17, top: 17 },
+        cursorAt: {
+            left: 17,
+            top: 17
+        },
         revert: 'invalid',
         zIndex: 900,
         start: function() {
@@ -52,7 +55,9 @@ var VIEW_NAME_REGEX = new RegExp(/[a-zA-Z_]+[a-z]/g),
                 });
             }
 
-            if (selfGroup.hasClass('ui-state-hover')) { selfGroup.removeClass('ui-state-hover'); }
+            if (selfGroup.hasClass('ui-state-hover')) {
+                selfGroup.removeClass('ui-state-hover');
+            }
 
             // Dragged from the list to a spot...
             if (!prevPart.hasClass('part-drop')) {
@@ -118,7 +123,10 @@ var VIEW_NAME_REGEX = new RegExp(/[a-zA-Z_]+[a-z]/g),
     },
     rearrangeOps = {
         addClass: false,
-        cursorAt: { left: 17, top: 17 },
+        cursorAt: {
+            left: 17,
+            top: 17
+        },
         revert: 'invalid',
         zIndex: 900,
         start: function() {
@@ -199,7 +207,9 @@ app.directive('uiDraggable', function() {
                     delete touchActive.prevObject;
                     delete touchActive.selector;
 
-                    options.drop.call(self, event, {draggable: touchActive.eq(0)});
+                    options.drop.call(self, event, {
+                        draggable: touchActive.eq(0)
+                    });
 
                     touchActive.removeClass('ui-touch-active');
                 } else if (!listTouchActive.length && !self.hasClass('ui-draggable-disabled') && self.hasClass('ui-state-highlight')) {
@@ -249,7 +259,9 @@ app.directive('uiDraggable', function() {
             var icon, description;
 
             if (scope.part.description) {
-                icon = $('<i class="icon-question-sign get-description ui-icon" title="Hint" data-toggle="tooltip"></i>').click(function() { scope.toggle(event); });
+                icon = $('<i class="icon-question-sign get-description ui-icon" title="Hint" data-toggle="tooltip"></i>').click(function() {
+                    scope.toggle(event);
+                });
                 description = $('<span class="part-description ui-helper-hidden-accessible">' + scope.part.description + '</span>');
 
                 elem.append(icon).append(description);
@@ -268,7 +280,10 @@ app.directive('uiDraggable', function() {
                 viewIndex = vars.viewIndex,
                 name = vars.name,
                 borderColors = scope[name + 'BorderColors'],
-                style = {left: part['x' + count] + '%', top: part['y' + count] + '%'},
+                style = {
+                    left: part['x' + count] + '%',
+                    top: part['y' + count] + '%'
+                },
                 colors = scope[name + 'Colors'],
                 randColor = function() {
                     if (colors.currentviewIndex !== viewIndex) {

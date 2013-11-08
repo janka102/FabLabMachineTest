@@ -2,7 +2,7 @@
 var machines = [
         {name: 'Bandsaw',
         id: 'bandsaw',
-    homePage: 'homePage',
+        homePage: 'homePage',
         views: {
             front: [
                 {name: 'On/Off Switch',
@@ -68,7 +68,7 @@ var machines = [
 
         {name: 'Drill Press',
         id: 'drillpress',
-    homePage: 'front',
+        homePage: 'front',
         views: {
             front: [
                 {name: 'Belt and Pully Housing',
@@ -186,7 +186,7 @@ var machines = [
 
         {name: 'Routers',
         id: 'routers',
-    homePage: 'inTableFront',
+        homePage: 'inTableFront',
         views: {
             inTableFront: [
                 {name: 'Housing Index Line',
@@ -317,7 +317,7 @@ var machines = [
 
         {name: 'Jointer',
         id: 'jointer',
-    homePage: 'front',
+        homePage: 'front',
         views: {
             front: [
                 {name: 'Fence',
@@ -395,7 +395,7 @@ var machines = [
 
         {name: 'Chopsaw',
         id: 'chopsaw',
-    homePage: 'front',
+        homePage: 'front',
         views: {
             front: [
                 {name: 'Digital Display',
@@ -525,7 +525,7 @@ var machines = [
 
         {name: 'Table Saw',
         id: 'tablesaw',
-    homePage: 'front',
+        homePage: 'front',
         views: {
             front: [
                 {name: 'Table Insert',
@@ -589,201 +589,213 @@ var machines = [
 
 /* Controllers */
 
-var MainCtrl = ['$scope', function($scope) {
-    $scope.machines = machines;
+var MainCtrl = ['$scope',
+    function($scope) {
+        $scope.machines = machines;
 
-    $scope.numColumns = 3;
-    $scope.machineRows = [];
-    $scope.machineRows.length = Math.ceil($scope.machines.length / $scope.numColumns);
-    $scope.machineCols = [];
-    $scope.machineCols.length = $scope.numColumns;
+        $scope.numColumns = 3;
+        $scope.machineRows = [];
+        $scope.machineRows.length = Math.ceil($scope.machines.length / $scope.numColumns);
+        $scope.machineCols = [];
+        $scope.machineCols.length = $scope.numColumns;
 
-    jQuery('[ng-view]').on('click', '.marketing-byline > span', function(){
-        window.open('https://www.youtube.com/watch?v=uhIpXPvq_n4','_blank');
-    });
+        jQuery('[ng-view]').on('click', '.marketing-byline > span', function() {
+            window.open('https://www.youtube.com/watch?v=uhIpXPvq_n4', '_blank');
+        });
 
-    // Pre load the instruction GIFs - hopefully will cut down load time for slow connections
-    function preload(arrayOfImages) {
-        $(arrayOfImages).each(function(){
-            $('<img/>')[0].src = this;
+        // Pre load the instruction GIFs - hopefully will cut down load time for slow connections
+
+        function preload(arrayOfImages) {
+            $(arrayOfImages).each(function() {
+                $('<img/>')[0].src = this;
+            });
+        }
+        preload(['img/instructions/drag.gif', 'img/instructions/replace.gif', 'img/instructions/rearrange.gif']);
+
+        jQuery('.instructGif').on('click', function() {
+            var self = $(this),
+                oldSrc = self.find('img').attr('src'),
+                ext = /\.[a-z]{3}/i,
+                newSrc = oldSrc.replace(ext, self.hasClass('static') ? '.gif' : '.png');
+
+            self.toggleClass('static');
+            self.find('img').attr('src', newSrc);
         });
     }
-    preload(['img/instructions/drag.gif', 'img/instructions/replace.gif', 'img/instructions/rearrange.gif']);
+];
 
-    jQuery('.instructGif').on('click', function(){
-        var self = $(this),
-        oldSrc = self.find('img').attr('src'),
-    ext = /\.[a-z]{3}/i,
-    newSrc = oldSrc.replace(ext, self.hasClass('static') ? '.gif' : '.png');
+var NavCtrl = ['$scope', '$location',
+    function($scope, $location) {
+        $scope.routeIs = function(routeNames) {
+            var loc = $location.path();
 
-        self.toggleClass('static');
-        self.find('img').attr('src', newSrc );
-    });
-}];
-
-var NavCtrl = ['$scope', '$location', function($scope, $location) {
-    $scope.routeIs = function(routeNames) {
-        var loc = $location.path();
-
-        // If the routes were given as an array...
-        if (routeNames instanceof Array) {
-            // Loop through each
-            for (var i = routeNames.length - 1; i >= 0; i-=1) {
-                // If the current route is equal to one given, return true
-                if (loc === routeNames[i]) {
-                    return true;
+            // If the routes were given as an array...
+            if (routeNames instanceof Array) {
+                // Loop through each
+                for (var i = routeNames.length - 1; i >= 0; i -= 1) {
+                    // If the current route is equal to one given, return true
+                    if (loc === routeNames[i]) {
+                        return true;
+                    }
                 }
+
+                // Otherwise return false
+                return false;
             }
-            
-            // Otherwise return false
-            return false;
-        }
 
-        // If the current route is equal to the one given, return true, otherwise return false.
-        return loc === routeNames;
-    };
-}];
-
-var MachineCtrl = ['$scope', '$location', '$routeParams', function($scope, $location, $routeParams) {
-    var paramMachine = $routeParams.machine,
-        validMachine = false,
-        viewLengths = [];
-
-    function arrayShuffle (aArray) {
-        for (var mTemp, j, i = aArray.length; i; ) {
-            j = parseInt(Math.random() * i, 10);
-            mTemp = aArray[--i];
-            aArray[i] = aArray[j];
-            aArray[j] = mTemp;
-        }
+            // If the current route is equal to the one given, return true, otherwise return false.
+            return loc === routeNames;
+        };
     }
+];
 
-    /* http://snipplr.com/view/14590/hsv-to-rgb */
-    function hsvToRgb(h, s, v) {
-        var r, g, b;
-        var i;
-        var f, p, q, t;
-        h = Math.max(0, Math.min(360, h));
-        s = Math.max(0, Math.min(100, s));
-        v = Math.max(0, Math.min(100, v));
-        s /= 100;
-        v /= 100;
-        if(s === 0) {
-            r = g = b = v;
+var MachineCtrl = ['$scope', '$location', '$routeParams',
+    function($scope, $location, $routeParams) {
+        var paramMachine = $routeParams.machine,
+            validMachine = false,
+            viewLengths = [];
+
+        function arrayShuffle(aArray) {
+            for (var mTemp, j, i = aArray.length; i;) {
+                j = parseInt(Math.random() * i, 10);
+                mTemp = aArray[--i];
+                aArray[i] = aArray[j];
+                aArray[j] = mTemp;
+            }
+        }
+
+        /* http://snipplr.com/view/14590/hsv-to-rgb */
+        function hsvToRgb(h, s, v) {
+            var r, g, b;
+            var i;
+            var f, p, q, t;
+            h = Math.max(0, Math.min(360, h));
+            s = Math.max(0, Math.min(100, s));
+            v = Math.max(0, Math.min(100, v));
+            s /= 100;
+            v /= 100;
+            if(s === 0) {
+                r = g = b = v;
+                return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+            }
+            h /= 60; // sector 0 to 5
+            i = Math.floor(h);
+            f = h - i; // factorial part of h
+            p = v * (1 - s);
+            q = v * (1 - s * f);
+            t = v * (1 - s * (1 - f));
+            switch(i) {
+                case 0:
+                    r = v; g = t; b = p; break;
+                case 1:
+                    r = q; g = v; b = p; break;
+                case 2:
+                    r = p; g = v; b = t; break;
+                case 3:
+                    r = p; g = q; b = v; break;
+                case 4:
+                    r = t; g = p; b = v; break;
+                default: // case 5:
+                    r = v; g = p; b = q;
+            }
             return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
         }
-        h /= 60; // sector 0 to 5
-        i = Math.floor(h);
-        f = h - i; // factorial part of h
-        p = v * (1 - s);
-        q = v * (1 - s * f);
-        t = v * (1 - s * (1 - f));
-        switch(i) {
-        case 0:
-            r = v; g = t; b = p; break;
-        case 1:
-            r = q; g = v; b = p; break;
-        case 2:
-            r = p; g = v; b = t; break;
-        case 3:
-            r = p; g = q; b = v; break;
-        case 4:
-            r = t; g = p; b = v; break;
-        default: // case 5:
-            r = v; g = p; b = q;
-        }
-        return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
-    }
+        
+        // Generates `view.length` colors if that view has a part with a count > 1
+        $scope.genUniqueRandomColors = function(view, name) {
+            $scope[name + 'Colors'] = {
+                currentPart: null,
+                currentIndex: null,
+                currentViewIndex: null,
+                colors: null
+            };
 
-    // Generates `view.length` colors if that view has a part with a count > 1
-    $scope.genUniqueRandomColors = function(view, name) {
-        $scope[name + 'Colors'] = {currentPart: null, currentIndex: null, currentViewIndex: null, colors: null};
+            for (var i = view.length - 1; i >= 0; i -= 1) {
+                if (view[i].count > 1) {
+                    break;
+                }
 
-        for (var i = view.length - 1; i >= 0; i-=1) {
-            if (view[i].count > 1) {
+                // If on the last item and and the above if statement has not triggered
+                // everyone has a count of 1, so just use the default color for all them
+                if (i === 0) {
+                    $scope[name + 'BorderColors'] = [];
+                    return;
+                }
+            }
+
+            var amount = view.length >= 4 ? view.length : 4, // Mimimum of 4 colors
+                h = 0,
+                s = 100,
+                v = 100,
+                amountArr = new Array(amount),
+                darken = false,
+                newColor = '',
+                tmpColors = [];
+
+            if (amount > 7) {
+                darken = true;
+            }
+
+            for (var j = amountArr.length - 1; j >= 0; j -= 1) {
+                newColor = 'rgb(' + hsvToRgb(h, s, v).join(', ') + ')';
+                //console.log(i + ': hsl(' + h + ', ' + s + ', ' + v + ') => ' + newColor);
+
+                // If amount < 7, divide the spectrum into `amount` pieces
+                if (!darken) {
+                    h += 360 / amount;
+                }
+                // Else divide the spectrum into about half `amount` pieces
+                // I do this because the other half will be the original, but darker
+                else {
+                    h += 360 / Math.ceil(amount / 2);
+                }
+
+                // If the hue is over 360, then start over, but darker
+                if (Math.round(h) > 360) { // Math.round b/c `h` can equal 360.00000...000006 for example
+                    h = (h - 360);
+                    v = 40;
+                }
+
+                // Push the new color
+                tmpColors.push(newColor);
+            }
+
+            $scope[name + 'BorderColors'] = tmpColors;
+        };
+
+        for (var i = machines.length - 1; i >= 0; i -= 1) {
+            if (machines[i].id === paramMachine) {
+                validMachine = true;
+                $scope.machine = machines[i];
                 break;
             }
+        }
 
-            // If on the last item and and the above if statement has not triggered
-            // everyone has a count of 1, so just use the default color for all them
-            if (i === 0) {
-                $scope[name + 'BorderColors'] = [];
-                return;
+        if (!validMachine) {
+            $location.path('/');
+            return;
+        }
+
+        for (var view in $scope.machine.views) {
+            if ($scope.machine.views.hasOwnProperty(view)) {
+                arrayShuffle($scope.machine.views[view]); // Randomizes the part order
+
+                viewLengths.push($scope.machine.views[view].length); // For genUniqueRandomColors()
             }
         }
 
-        var amount = view.length >= 4 ? view.length : 4, // Mimimum of 4 colors
-            h = 0,
-            s = 100,
-            v = 100,
-            amountArr = new Array(amount),
-            darken = false,
-            newColor = '',
-            tmpColors = [];
+        // For displaying the parts
+        $scope.alphabet = alphabet;
 
-        if (amount > 7) {
-            darken = true;
-        }
+        // Returns an array of length `num`. Used in `ng-repeat` to repeat `num` times
+        $scope.makeArray = function(num) {
+            return new Array(num);
+        };
 
-        for (var j = amountArr.length - 1; j >= 0; j-=1) {
-            newColor = 'rgb(' + hsvToRgb(h, s, v).join(', ') + ')';
-            //console.log(i + ': hsl(' + h + ', ' + s + ', ' + v + ') => ' + newColor);
-
-            // If amount < 7, divide the spectrum into `amount` pieces
-            if (!darken) {
-                h += 360/amount;
-            }
-            // Else divide the spectrum into about half `amount` pieces
-            // I do this because the other half will be the original, but darker
-            else {
-                h += 360/Math.ceil(amount/2);
-            }
-
-            // If the hue is over 360, then start over, but darker
-            if (Math.round(h) > 360) { // Math.round b/c `h` can equal 360.00000...000006 for example
-                h = (h - 360);
-                v = 40;
-            }
-
-            // Push the new color
-            tmpColors.push(newColor);
-        }
-
-        $scope[name + 'BorderColors'] = tmpColors;
-    };
-
-    for (var i = machines.length - 1; i >= 0; i-=1) {
-        if (machines[i].id === paramMachine) {
-            validMachine = true;
-            $scope.machine = machines[i];
-            break;
-        }
+        // Toggles the description of each part
+        $scope.toggle = function($event) {
+            $($event.target).next().toggleClass('ui-helper-hidden-accessible');
+            //console.log('toggled', part);
+        };
     }
-    
-    if (!validMachine) {
-        $location.path('/');
-        return;
-    }
-
-    for (var view in $scope.machine.views) {
-        if ($scope.machine.views.hasOwnProperty(view)) {
-            arrayShuffle($scope.machine.views[view]); // Randomizes the part order
-
-            viewLengths.push($scope.machine.views[view].length); // For genUniqueRandomColors()
-        }
-    }
-
-    // For displaying the parts
-    $scope.alphabet = alphabet;
-    
-    // Returns an array of length `num`. Used in `ng-repeat` to repeat `num` times
-    $scope.makeArray = function(num) {
-        return new Array(num);
-    };
-    
-    // Toggles the description of each part
-    $scope.toggle = function($event){
-        $($event.target).next().toggleClass('ui-helper-hidden-accessible');
-        //console.log('toggled', part);
-    };
-}];
+];

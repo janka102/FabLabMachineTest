@@ -1,15 +1,16 @@
 <!-- Jumbotron -->
 <div class="jumbotron masthead">
-  <div class="fablab">
-  </div>
+    <div class="fablab">
+    </div>
 </div>
 <!-- /Jumbotron -->
 <div class="container">
     <div class="marketing">
         <h1>The Machines.</h1>
-        <p class="marketing-byline">Want to get to know them? <span>Here they are</span>.</p>
+        <p class="marketing-byline">Want to get to know them?
+            <span>Here they are</span>.</p>
         <div class="row-fluid" ng-repeat="row in machineRows">
-	    <a href="#/{{machine.id}}" class="span4 machine well" ng-style="{'background-image': 'url(img/'+machine.id+'/'+machine.homePage+'.png)'}" ng-repeat="col in machineCols" ng-init="machine = machines[$parent.$index * numColumns + $index]">
+            <a href="#/{{machine.id}}" class="span4 machine well" ng-style="{'background-image': 'url(img/'+machine.id+'/'+machine.homePage+'.png)'}" ng-repeat="col in machineCols" ng-init="machine = machines[$parent.$index * numColumns + $index]">
                 <h2 class="title">{{machine.name}}</h2>
             </a>
         </div>
@@ -27,21 +28,21 @@
                 <h2>2. Fill in the Parts</h2>
             </div>
             <p class="lead">
-		Move the parts from the word bank onto the rings.
+                Move the parts from the word bank onto the rings.
             </p>
-	    <h3>2a. Dragging from the word bank.</h3>
+            <h3>2a. Dragging from the word bank.</h3>
             <div class="instructGif static">
-		<img src="img/instructions/drag.png" class="img-polaroid" draggable="false" unselectable="on" ondragstart="function(){return false;}">
+                <img src="img/instructions/drag.png" class="img-polaroid" draggable="false" unselectable="on" ondragstart="function(){return false;}">
             </div>
-            
-	    <h3>2b. Replacing parts.</h3>
+
+            <h3>2b. Replacing parts.</h3>
             <div class="instructGif static">
-		<img src="img/instructions/replace.png" class="img-polaroid" draggable="false" unselectable="on" ondragstart="function(){return false;}">
+                <img src="img/instructions/replace.png" class="img-polaroid" draggable="false" unselectable="on" ondragstart="function(){return false;}">
             </div>
-            
-	    <h3>2c. Rearranging parts.</h3>
+
+            <h3>2c. Rearranging parts.</h3>
             <div class="instructGif static">
-		<img src="img/instructions/rearrange.png" class="img-polaroid" draggable="false" unselectable="on" ondragstart="function(){return false;}">
+                <img src="img/instructions/rearrange.png" class="img-polaroid" draggable="false" unselectable="on" ondragstart="function(){return false;}">
             </div>
 
             <h3>2d. Sometimes there are hints.</h3>
@@ -58,14 +59,14 @@
                 Once you are satisfied with your decisions, click Submit at the bottom.
             </p>
 
-	    <h3>3a. Gettting the results.</h3>
-	    <p class="lead">
-		The parts will turn green if correct and red if wrong.
-	    </p>
-	    <img src="img/instructions/scoreSingle.gif" class="img-polaroid" draggable="false" unselectable="on" ondragstart="function(){return false;}">
+            <h3>3a. Gettting the results.</h3>
+            <p class="lead">
+                The parts will turn green if correct and red if wrong.
+            </p>
+            <img src="img/instructions/scoreSingle.gif" class="img-polaroid" draggable="false" unselectable="on" ondragstart="function(){return false;}">
 
 
-	    <h3>3b. If you want to retry, you can make modifications or click Reset.</h3>
+            <h3>3b. If you want to retry, you can make modifications or click Reset.</h3>
 
 
             <div class="page-header">
