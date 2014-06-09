@@ -1,9 +1,12 @@
 var connect = require('connect'),
+    http = require('http'),
     port = process.env.PORT || 3000;
 
-connect(
-	//connect.logger('dev'),
-	connect.compress(),
-	connect.static(__dirname + '/public')
-).listen(port);
 
+var app = connect()
+    //.use(connect.logger('dev'))
+    .use(connect.compress())
+    .use(connect.static('public'));
+
+http.createServer(app).listen(port);
+console.log('Fab Lab started on port', port);
