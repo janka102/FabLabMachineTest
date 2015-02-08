@@ -32,7 +32,7 @@ img[draggable="false"] {
     background-position: center 81px !important;
 }
 
-.jumbotron:after {
+.jumbotron::after {
     -webkit-background-size: 81px !important;
        -moz-background-size: 81px !important;
             background-size: 81px !important;
@@ -55,7 +55,7 @@ img[draggable="false"] {
     background-position: center 70px !important;
 }
 
-.jumbotron:after {
+.jumbotron::after {
     -webkit-background-size: 75px !important;
        -moz-background-size: 75px !important;
             background-size: 75px !important;
@@ -105,7 +105,7 @@ body {
     background-position: center 60px !important;
 }
 
-.jumbotron:after {
+.jumbotron::after {
     -webkit-background-size: 55px !important;
        -moz-background-size: 55px !important;
             background-size: 55px !important;
@@ -141,7 +141,7 @@ html, body {
     margin: 0 auto -71px; /* -(footer-height + 31) */
 }
 
-#wrap:after {
+#wrap::after {
     content: '';
     display: block; /* must be >= footer */
     height: 150px;
@@ -221,7 +221,7 @@ header h1 {
     background-attachment: fixed;
 }
 
-.jumbotron:after, header:after {
+.jumbotron::after, header::after {
     content: '';
     display: block;
     position: absolute;
@@ -269,11 +269,11 @@ header h1 {
     background-position: -2px;
 }
 
-.jumbotron:after {
+.jumbotron::after {
     background-attachment: fixed;
 }
 
-header:after {
+header::after {
     -webkit-background-size: 75px;
        -moz-background-size: 75px;
             background-size: 75px;
@@ -388,7 +388,7 @@ header:after {
     cursor: pointer;
 }
 
-.instructGif:before {
+.instructGif::before {
     content: "";
     position: absolute;
     bottom: 16px;
@@ -399,7 +399,7 @@ header:after {
     border-width: 0 16px;
 }
 
-.instructGif.static:before {
+.instructGif.static::before {
     top: -webkit-calc(50% - 50px);
     top:         calc(50% - 50px);
     left: -webkit-calc(50% - 38px);
@@ -411,11 +411,11 @@ header:after {
     border-left-color: #76FF76;
 }
 
-.instructGif:hover:before {
+.instructGif:hover::before {
     border-color: #FF7676;
 }
 
-.instructGif.static:hover:before {
+.instructGif.static:hover::before {
     border-color: transparent;
     border-left-color: #FFFFFF;
 }
